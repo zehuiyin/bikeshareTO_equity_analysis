@@ -1,0 +1,152 @@
+---
+title: "4th Counting Ridership"
+author: "Zehui Yin"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(arrow)
+library(mapview)
+library(sf)
+library(writexl)
+```
+
+# Ridership data
+
+```{r}
+trips <- read_parquet("./Data/trips.parquet")
+trips_casual <- trips |> filter(User.Type == "Casual Member")
+trips_annual <- trips |> filter(User.Type == "Annual Member")
+```
+
+# Station data
+
+```{r}
+stations_df <- read_parquet("./Data/stations.parquet")
+stations_df <- st_as_sf(stations_df, coords = c("lon", "lat"), crs = 4326)
+mapview(stations_df)
+```
+
+# try to match station name to id
+
+```{r}
+trips_start <- trips[, c("Start.Station.Id", "Start.Station.Name")]
+trips_end <- trips[, c("End.Station.Id", "End.Station.Name")]
+
+trips_start <- distinct(trips_start)
+trips_end <- distinct(trips_end)
+
+colnames(trips_start) <- c("id", "name")
+colnames(trips_end) <- c("id", "name")
+
+trips_stations <- rbind(trips_start, trips_end)
+trips_stations <- distinct(trips_stations)
+```
+
+```{r}
+station_match <-
+  merge(x = trips_stations,
+      y = as.data.frame(stations_df)[, c("station_id", "name")],
+      by.x = "id",
+      by.y = "station_id")
+
+write_xlsx(station_match, "station_match.xlsx")
+```
+
+Three station seems mismatched and thus removed form the following calculation:
+station_id
+7094
+7322
+
+# Count ridership at each station
+
+- Each trip's origin and destination are counted both at the origin and the 
+destination station.
+
+- Some trips do not provide station address.
+
+- Trips are matched to their station id, omitting the above 2 stations.
+
+```{r}
+stations_df <- as.data.frame(stations_df)
+stations_df$all_trips <- NA
+stations_df$casual <- NA
+stations_df$annual <- NA
+```
+
+```{r}
+for (i in 1:nrow(stations_df)) {
+  station_id <- stations_df[i, "station_id"]
+  n <- trips |> filter(Start.Station.Id == station_id) |> nrow()
+  n <- n + trips |> filter(End.Station.Id == station_id) |> nrow()
+  stations_df[i, "all_trips"] <- n
+}
+
+# about 2.5% trips are dropped
+sum(stations_df$all_trips)/2/nrow(trips)*100
+```
+
+```{r}
+for (i in 1:nrow(stations_df)) {
+  station_id <- stations_df[i, "station_id"]
+  n <- trips_casual |> filter(Start.Station.Id == station_id) |> nrow()
+  n <- n + trips_casual |> filter(End.Station.Id == station_id) |> nrow()
+  stations_df[i, "casual"] <- n
+}
+
+# about 2.5% trips are dropped
+sum(stations_df$casual)/2/nrow(trips_casual)*100
+```
+
+```{r}
+for (i in 1:nrow(stations_df)) {
+  station_id <- stations_df[i, "station_id"]
+  n <- trips_annual |> filter(Start.Station.Id == station_id) |> nrow()
+  n <- n + trips_annual |> filter(End.Station.Id == station_id) |> nrow()
+  stations_df[i, "annual"] <- n
+}
+
+# about 4% trips are dropped
+sum(stations_df$annual)/2/nrow(trips_annual)*100
+```
+
+```{r}
+# 0.9% of stations do not have any ridership assigned
+stations_df |> filter(all_trips == 0) |> nrow()/nrow(stations_df)*100
+```
+
+# Some visualization
+
+```{r}
+stations_df <- st_as_sf(stations_df)
+stations_df |>
+  mutate(all_trips_T = all_trips != 0) |>
+  mapview(zcol = "all_trips_T")
+```
+
+# Save
+
+```{r}
+# validation
+stations_df |>
+  as.data.frame() |>
+  mutate(total = casual + annual) |>
+  mutate(check = if_else(all_trips == total, 1, 0)) |>
+  pluck("check") |> sum()
+```
+
+```{r}
+# drop the two seemed mismatched stations
+stations_df <- st_drop_geometry(stations_df)
+
+stations_df[which(stations_df$station_id == "7094"), 
+            c("all_trips", "casual", "annual")] <- c(0,0,0)
+
+stations_df[which(stations_df$station_id == "7322"), 
+            c("all_trips", "casual", "annual")] <- c(0,0,0)
+```
+
+```{r}
+write_parquet(stations_df, "./Data/station_with_ridership.parquet")
+```

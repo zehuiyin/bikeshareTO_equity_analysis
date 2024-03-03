@@ -1,0 +1,107 @@
+---
+title: "Calculating Isochrones"
+author: "Zehui Yin"
+format: html
+---
+
+```{r}
+library(sf)
+Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jdk-11.0.17")
+library(r5r)
+library(mapview)
+library(arrow)
+```
+
+```{r}
+options(java.parameters = "-Xmx12G")
+r5r_core <- setup_r5(data_path = "./Network", verbose = F)
+```
+
+```{r}
+stations_df <- read_parquet("./Data/stations.parquet")
+stations <- stations_df[, c("station_id", "lat", "lon")]
+stations <- st_as_sf(stations, coords = c("lon", "lat"), crs = 4326)
+stations$id <- stations$station_id
+mapview(stations)
+```
+
+```{r}
+catchment <- isochrone(
+  r5r_core = r5r_core,
+  origins = stations,
+  mode = "WALK",
+  walk_speed = 5,
+  cutoffs = 15,
+  sample_size = 1
+)
+
+stop_r5(r5r_core)
+```
+
+```{r}
+catchment <- st_make_valid(catchment)
+mapview(catchment)
+```
+
+```{r}
+st_write(catchment, "./Data/catchment_areas.gpkg")
+```
+
+# Solve overlapping
+
+```{r}
+catchment <- st_read("./Data/catchment_areas.gpkg")
+stations_df <- read_parquet("./Data/stations.parquet")
+stations <- stations_df[, c("station_id", "lat", "lon")]
+stations <- st_as_sf(stations, coords = c("lon", "lat"), crs = 4326)
+
+# Voronoi tesselation
+stations <- st_transform(stations, crs = 26917) # reproject to NAD83 Zone 17N
+voronoi <- stations |>
+  st_geometry() |>
+  st_union() |>
+  st_voronoi() |>
+  st_collection_extract()
+mapview(voronoi)
+```
+
+```{r}
+# Put them back in their original order
+voronoi <-
+  voronoi[unlist(st_intersects(stations, voronoi))]
+
+# Keep the attributes
+result <- stations
+
+catchment <- st_transform(catchment, crs = 26917) # reproject to NAD83 Zone 17N
+catchment <- st_make_valid(catchment)
+
+# Intersect voronoi zones with buffer zones
+st_geometry(result) <-
+  mapply(
+    function(x,y) {
+        z <- 
+          st_intersection(
+            x,
+            y
+          ) %>% 
+          # this can create multiple parts, so we union.
+          st_union()
+      },
+      # we need this to produce a list to iterate over
+      # in parallel with voronoi elements, so we 
+      # convert to sfc
+      st_as_sfc(catchment[attributes(catchment)$sf_column]),
+      voronoi,
+      SIMPLIFY=FALSE
+    ) %>% 
+    # st_sfc() returned errors, but st_as_sfc() did not
+    st_as_sfc(crs = st_crs(stations))
+
+# st_read("./Data/catchment_areas_no_overlap.gpkg")
+mapview(result)
+```
+
+```{r}
+st_write(result, "./Data/catchment_areas_no_overlap.gpkg")
+```

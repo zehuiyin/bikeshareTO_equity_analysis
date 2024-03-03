@@ -1,0 +1,125 @@
+---
+title: "Data Cleaning"
+author: "Zehui Yin"
+format: html
+---
+
+```{r}
+library(jsonlite)
+library(tidyverse)
+library(arrow)
+library(mapview)
+library(sf)
+library(cancensus)
+```
+
+# Station data
+
+```{r}
+stations <- read_json("./Data/station_information_2024_jan_8.json")
+stations <- stations$data$stations
+stations_df <- as.data.frame(matrix(nrow = length(stations), ncol = 15))
+colnames(stations_df) <- c("station_id", "name", "physical_configuration",
+                           "lat", "lon", "altitude", "address", "cross_street",
+                           "capacity", "is_charging_station", "rental_methods", 
+                           "groups", "obcn", "nearby_distance", 
+                           "ride_code_support")
+
+for (i in 1:length(stations)) {
+  holder <- as.data.frame(unlist(stations[i]))
+  stations_df[i, "station_id"] <- holder["station_id",]
+  stations_df[i, "name"] <- holder["name",]
+  stations_df[i, "physical_configuration"] <- holder["physical_configuration",]
+  stations_df[i, "lat"] <- holder["lat",]
+  stations_df[i, "lon"] <- holder["lon",]
+  stations_df[i, "altitude"] <- holder["altitude",]
+  stations_df[i, "address"] <- holder["address",]
+  stations_df[i, "cross_street"] <- holder["cross_street",]
+  stations_df[i, "capacity"] <- holder["capacity",]
+  stations_df[i, "is_charging_station"] <- holder["is_charging_station",]
+  stations_df[i, "rental_methods"] <- paste(holder[str_which(row.names(holder), coll("rental_methods", ignore_case = FALSE, locale = "en")),], collapse = ",")
+  stations_df[i, "groups"] <- holder["groups",]
+  stations_df[i, "obcn"] <- holder["obcn",]
+  stations_df[i, "nearby_distance"] <- holder["nearby_distance",]
+  stations_df[i, "ride_code_support"] <- holder["_ride_code_support",]
+}
+
+write_parquet(stations_df, "./Data/stations.parquet")
+stations_df <- read_parquet("./Data/stations.parquet") # only run this line is fine
+```
+
+```{r}
+stations_df <- st_as_sf(stations_df, coords = c("lon", "lat"), crs = 4326)
+mapview(stations_df)
+```
+
+# 2021 Census data
+
+```{r}
+options(cancensus.api_key = "your_key_here")
+options(cancensus.cache_path = "./Census")
+
+# Returns data and geography as an sf-class data frame
+census_data <- get_census(
+  # 2021 census
+  dataset='CA21',
+  # CSD Toronto
+  regions=list(CSD="3520005"),
+  # Census variables
+  vectors=c(
+    # gender
+    "v_CA21_10","v_CA21_8",
+    # population count
+    "v_CA21_1",
+    
+    # Indigenous identity (Total)
+    "v_CA21_4204",
+    # Total - Indigenous identity for the population in private households (Total)
+    "v_CA21_4201",
+    # Not a visible minority (Total)
+    "v_CA21_4914",
+    # Total - Visible minority for the population in private households (Total)
+    "v_CA21_4872",
+    # Chinese (Total)
+    "v_CA21_4881",
+    # Black (Total)
+    "v_CA21_4884",
+    # Latin American (Total)
+    "v_CA21_4893",
+    # Under $5,000; $5,000 to $9,999; $10,000 to $14,999; $15,000 to $19,999 ;
+    # $20,000 to $24,999; $25,000 to $29,999; $30,000 to $34,999; $35,000 to $39,999
+    "v_CA21_924","v_CA21_925","v_CA21_926","v_CA21_927","v_CA21_928","v_CA21_929","v_CA21_930","v_CA21_931",
+    # $100,000 and over
+    # Household total income groups in 2020 for private households
+    "v_CA21_939","v_CA21_923"
+  ),
+  # at Census Tract level
+  level='DA',
+  geo_format = 'sf', quiet = TRUE)
+
+tor_boundary <- st_read("./Data/City Wards Data - 4326.gpkg")
+mapview(list(census_data, tor_boundary))
+```
+
+# Ridership data
+
+```{r}
+trips1 <- read.csv("./Data/Bike share ridership 2023-01.csv")
+trips2 <- read.csv("./Data/Bike share ridership 2023-02.csv")
+trips3 <- read.csv("./Data/Bike share ridership 2023-03.csv")
+trips4 <- read.csv("./Data/Bike share ridership 2023-04.csv")
+trips5 <- read.csv("./Data/Bike share ridership 2023-05.csv")
+trips6 <- read.csv("./Data/Bike share ridership 2023-06.csv")
+trips7 <- read.csv("./Data/Bike share ridership 2023-07.csv")
+trips8 <- read.csv("./Data/Bike share ridership 2023-08.csv")
+trips9 <- read.csv("./Data/Bike share ridership 2023-09.csv")
+trips10 <- read.csv("./Data/Bike share ridership 2023-10.csv")
+trips11 <- read.csv("./Data/Bike share ridership 2023-11.csv")
+trips12 <- read.csv("./Data/Bike share ridership 2023-12.csv")
+trips <- rbind(trips1, trips2, trips3, trips4, trips5, trips6, trips7, trips8, trips9, trips10, trips11, trips12)
+trips$Start.Time <- as.POSIXct(trips$Start.Time, "%m/%d/%Y %H:%M", tz = "America/Toronto")
+trips$End.Time <- as.POSIXct(trips$End.Time, "%m/%d/%Y %H:%M", tz = "America/Toronto")
+
+write_parquet(trips, "./Data/trips.parquet")
+# trips <- read_parquet("./Data/trips.parquet")
+```

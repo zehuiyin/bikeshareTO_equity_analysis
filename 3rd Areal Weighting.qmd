@@ -1,0 +1,314 @@
+---
+title: "Areal Weighting"
+author: "Zehui Yin"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(mapview)
+library(sf)
+library(cancensus)
+library(areal)
+```
+
+# Station catchment areas data
+
+```{r}
+catchment <- st_read("./Data/catchment_areas_no_overlap.gpkg")
+mapview(catchment)
+```
+
+# 2021 Census data
+
+```{r}
+options(cancensus.api_key = "your_key_here")
+options(cancensus.cache_path = "./Census")
+
+# Returns data and geography as an sf-class data frame
+census_data <- get_census(
+  # 2021 census
+  dataset='CA21',
+  # CSD Toronto
+  regions=list(CSD="3520005"),
+  # Census variables
+  vectors=c(
+    # gender
+    "v_CA21_10","v_CA21_8",
+    # population count
+    "v_CA21_1",
+    # Indigenous identity (Total)
+    "v_CA21_4204",
+    # Total - Indigenous identity for the population in private households (Total)
+    "v_CA21_4201",
+    # Not a visible minority (Total)
+    "v_CA21_4914",
+    # Total - Visible minority for the population in private households (Total)
+    "v_CA21_4872",
+    # Chinese (Total)
+    "v_CA21_4881",
+    # Black (Total)
+    "v_CA21_4884",
+    # Latin American (Total)
+    "v_CA21_4893",
+    # Under $5,000; $5,000 to $9,999; $10,000 to $14,999; $15,000 to $19,999 ;
+    # $20,000 to $24,999; $25,000 to $29,999; $30,000 to $34,999; $35,000 to $39,999
+    "v_CA21_924","v_CA21_925","v_CA21_926","v_CA21_927","v_CA21_928","v_CA21_929","v_CA21_930","v_CA21_931",
+    # $100,000 and over
+    # Household total income groups in 2020 for private households
+    "v_CA21_939","v_CA21_923"
+  ),
+  # at Census Tract level
+  level='DA',
+  geo_format = 'sf', quiet = TRUE)
+
+mapview(census_data)
+```
+
+# Calculate percentages at census geographies
+
+**Variables**:
+
+- Percentage of female
+
+```{r}
+census_data$PCT_female <- census_data$`v_CA21_10: Total - Age`/census_data$`v_CA21_8: Total - Age`*100
+mapview(census_data, zcol = "PCT_female")
+```
+
+- Percentage of rest of residents based on gender
+
+```{r}
+census_data$PCT_rest_gender <- 100-census_data$PCT_female
+mapview(census_data, zcol = "PCT_rest_gender")
+```
+
+- Percentage of indigenous people
+
+```{r}
+census_data$PCT_indigenous <- census_data$`v_CA21_4204: Indigenous identity (39)`/census_data$`v_CA21_4201: Total - Indigenous identity for the population in private households`*100
+mapview(census_data, zcol = "PCT_indigenous")
+```
+
+- Percentage of non-indigenous people
+
+```{r}
+census_data$PCT_non_indigenous <- 100 - census_data$PCT_indigenous
+mapview(census_data, zcol = "PCT_non_indigenous")
+```
+
+- Percentage of not a visible minority (White)
+
+```{r}
+census_data$PCT_white <- census_data$`v_CA21_4914: Not a visible minority`/census_data$`v_CA21_4872: Total - Visible minority for the population in private households`*100
+mapview(census_data, zcol = "PCT_white")
+```
+
+- Percentage of Chinese
+
+```{r}
+census_data$PCT_chinese <- census_data$`v_CA21_4881: Chinese`/census_data$`v_CA21_4872: Total - Visible minority for the population in private households`*100
+mapview(census_data, zcol = "PCT_chinese")
+```
+
+- Percentage of Black
+
+```{r}
+census_data$PCT_black <- census_data$`v_CA21_4884: Black`/census_data$`v_CA21_4872: Total - Visible minority for the population in private households`*100
+mapview(census_data, zcol = "PCT_black")
+```
+
+- Percentage of Latin American
+
+```{r}
+census_data$PCT_latino <- census_data$`v_CA21_4893: Latin American`/census_data$`v_CA21_4872: Total - Visible minority for the population in private households`*100
+mapview(census_data, zcol = "PCT_latino")
+```
+
+- Percentage of rest of residents based on ethnicity
+
+```{r}
+census_data$PCT_rest_ethnicity <- 100 - census_data$PCT_white - 
+  census_data$PCT_chinese - census_data$PCT_black -
+  census_data$PCT_latino
+mapview(census_data, zcol = "PCT_rest_ethnicity")
+```
+
+- Percentage of people's household total income below 40k
+
+```{r}
+census_data$PCT_income_blw40k <- (census_data$`v_CA21_924: Under $5,000` +
+                                    census_data$`v_CA21_925: $5,000 to $9,999` +
+                                    census_data$`v_CA21_926: $10,000 to $14,999` +
+                                    census_data$`v_CA21_927: $15,000 to $19,999` +
+                                    census_data$`v_CA21_928: $20,000 to $24,999` +
+                                    census_data$`v_CA21_929: $25,000 to $29,999` +
+                                    census_data$`v_CA21_930: $30,000 to $34,999` +
+                                    census_data$`v_CA21_931: $35,000 to $39,999`)/census_data$`v_CA21_923: Number of after-tax income recipients aged 15 years and over in private households in 2019`*100
+mapview(census_data, zcol = "PCT_income_blw40k")
+```
+
+- Percentage of people's household total income above 100k
+
+```{r}
+census_data$PCT_income_abv100k <- census_data$`v_CA21_939: $100,000 and over`/census_data$`v_CA21_923: Number of after-tax income recipients aged 15 years and over in private households in 2019`*100
+mapview(census_data, zcol = "PCT_income_abv100k")
+```
+
+- Percentage of rest of residents based on income
+
+```{r}
+census_data$PCT_rest_income <- 100 - census_data$PCT_income_blw40k -
+  census_data$PCT_income_abv100k
+mapview(census_data, zcol = "PCT_rest_income")
+```
+
+# Areal Weighting
+
+Some source: 
+
+[Doc](https://chris-prener.github.io/areal/articles/areal-weighted-interpolation.html)
+
+[Paper](https://joss.theoj.org/papers/10.21105/joss.01221)
+
+$$W_i=\frac{A_i}{\sum_i{A_{ik}}}$$
+
+```{r}
+# transform to the same projection
+census_data <- st_transform(census_data, crs = 26917)
+
+# 68 census DA has NA
+census_data |>
+  select(c("PCT_female",
+           "PCT_rest_gender",
+           "PCT_indigenous", 
+           "PCT_non_indigenous",
+           "PCT_white",
+           "PCT_chinese",
+           "PCT_black",
+           "PCT_latino",
+           "PCT_rest_ethnicity",
+           "PCT_income_blw40k",
+           "PCT_income_abv100k",
+           "PCT_rest_income")) |>
+  filter(if_any(everything(), is.na)) |>
+  mapview()
+```
+
+```{r}
+aw_inter_no_na <- function(catch, census, vars) {
+  # drop census DA with NA before computation
+  no_na <- census[!is.na(as.data.frame(census)[, vars]),]
+
+  # validate inputs
+  ar_validate(source = no_na, 
+            target = catchment, 
+            varList = vars,
+            method = "aw", 
+            verbose = T) |> print()
+
+  # check weight sum
+  aw_preview_weights(catch, tid = station_id, source = no_na, sid = name, 
+                   type = "intensive") |> print()
+
+  # areal weighting
+  catchment_out <- 
+    aw_interpolate(catch, tid = station_id, source = no_na, sid = name, 
+               weight = "sum", output = "tibble", 
+               intensive = vars)
+  
+  return(catchment_out)
+}
+```
+
+```{r}
+female <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_female")
+
+rest_gender <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_rest_gender")
+
+indigenous <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_indigenous")
+
+non_indigenous <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_non_indigenous")
+
+white <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_white")
+
+chinese <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_chinese")
+
+black <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_black")
+
+latino <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_latino")
+
+rest_ethnicity <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_rest_ethnicity")
+
+income_blw40k <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_income_blw40k")
+
+income_abv100k <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_income_abv100k")
+
+rest_income <- 
+  aw_inter_no_na(catch = catchment, census = census_data, 
+                 vars = "PCT_rest_income")
+```
+
+```{r}
+# put all data frames into list
+df_list <- list(female, rest_gender,
+                indigenous, non_indigenous,
+                white, chinese, black, latino, rest_ethnicity,
+                income_blw40k, income_abv100k, rest_income)
+
+# merge all data frames in list
+catchment_socdem <- df_list %>% reduce(full_join, by='station_id')
+catchment_socdem <- merge(catchment, catchment_socdem, by='station_id')
+
+# some stations fall completely within DA with no income data
+mapview(catchment_socdem, zcol = "PCT_income_blw40k") + mapview(census_data, zcol = "PCT_income_blw40k")
+mapview(catchment_socdem, zcol = "PCT_income_abv100k") + mapview(census_data, zcol = "PCT_income_abv100k")
+
+st_write(catchment_socdem, 
+         "./Data/catchment_areas_no_overlap_with_socdem.gpkg",
+         append = F)
+```
+
+## A manual check
+
+```{r eval=FALSE}
+catchment$area_catch <- st_area(catchment)
+
+catchment %>%
+  aw_intersect(source = census_data, areaVar = "area") -> intersect
+
+# use (overlapping) catchment area size as denominator
+intersect %>%
+  aw_weight(areaVar = "area", totalVar = "area_catch", 
+            areaWeight = "areaWeight") -> intersect
+
+intersect %>%
+  aw_calculate(value = PCT_indigenous, areaWeight = "areaWeight") -> intersect
+
+intersect %>%
+  aw_aggregate(target = catchment, tid = station_id, interVar = PCT_indigenous) -> result
+
+result
+```

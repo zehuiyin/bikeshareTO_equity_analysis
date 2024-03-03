@@ -1,0 +1,279 @@
+---
+title: "6th Data Visualization"
+author: "Zehui Yin"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(latex2exp)
+```
+
+```{r}
+results <- read_excel("Final results.xlsx")
+```
+
+# Aggregated Results
+
+```{r}
+results <- results |> pivot_longer(-Variables, names_to = "type", values_to = "PCT") |>
+  mutate(Variables = factor(Variables, levels = rev(c(
+    "Female",
+    "Other Genders",
+    "Indigenous",
+    "Non-Indigenous",
+    "White",
+    "Chinese",
+    "Black",
+    "Latino",
+    "Other Ethnicities",
+    "Income <40k",
+    "Income >100k",
+    "Other Income Levels"
+  )), ordered = T),
+  type = factor(type, levels = c(
+    "Annual Riders",
+    "All Riders",
+    "Casual Riders",
+    "Toronto"), ordered = T))
+```
+
+```{r}
+ggplot() +
+  geom_line(aes(x = PCT, y = Variables), color = "grey", linewidth = 3,
+            data = results[which(results$type %in% c("Toronto", "All Riders")),]) +
+  geom_line(aes(x = PCT, y = Variables), color = "#e78ac3", 
+            linewidth = 1, group = 1, linetype = "dotted",
+            data = results[which(results$type == "Toronto"),]) +
+  # for generating correct legend
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type),
+             data = results[which(results$type %in% 
+                                    c("Annual Riders", 
+                                      "All Riders",
+                                      "Casual Riders")),],
+             alpha = 0) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0.2),
+              data = results[which(results$type == "Annual Riders"),]) +
+  # white point background for Toronto baseline
+  geom_point(aes(x = PCT, y = Variables), size = 4, color = "white",
+              position = position_nudge(x = 0, y = 0),
+              data = results[which(results$type == "Toronto"),]) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0),
+              data = results[which(results$type == "All Riders"),]) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 4, 
+              position = position_nudge(x = 0, y = 0), stroke = 1,
+              data = results[which(results$type == "Toronto"),]) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = -0.2),
+              data = results[which(results$type == "Casual Riders"),]) +
+  scale_shape_manual(
+    values = c("All Riders" = 16,
+               "Casual Riders" = 16,
+               "Annual Riders" = 16,
+               "Toronto" = 1),
+    name = "",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders", "Toronto Average"
+    )
+  ) +
+  scale_color_manual(
+    values = c("All Riders" = "#66c2a5",
+               "Casual Riders" = "#fc8d62",
+               "Annual Riders" = "#8da0cb",
+               "Toronto" = "#e78ac3"),
+    name = "",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders", "Toronto Average"
+    )
+  ) +
+  labs(x = "Percentage", y = "Socio-demographics") +
+  theme(panel.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "grey90",
+                                          linetype = "dashed"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.key = element_blank(),
+        legend.direction = "horizontal",
+        legend.position = "bottom")
+
+ggsave("./Graphs/final_results.png", dpi = 600, height = 12, width = 6)
+```
+
+```{r}
+ggplot() +
+  # for generating correct legend
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type),
+             data = results[which(results$type %in% 
+                                    c("Annual Riders", 
+                                      "All Riders",
+                                      "Casual Riders")),],
+             alpha = 0) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0.2),
+              data = results[which(results$type == "Annual Riders"),]) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0),
+              data = results[which(results$type == "All Riders"),]) +
+  geom_point(aes(x = PCT, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = -0.2),
+              data = results[which(results$type == "Casual Riders"),]) +
+  scale_shape_manual(
+    values = c("All Riders" = 16,
+               "Casual Riders" = 16,
+               "Annual Riders" = 16),
+    name = "Weight:",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders"
+    )
+  ) +
+  scale_color_manual(
+    values = c("All Riders" = "#66c2a5",
+               "Casual Riders" = "#fc8d62",
+               "Annual Riders" = "#8da0cb"),
+    name = "Weight:",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders"
+    )
+  ) +
+  labs(x = "Percentage", y = "Socio-demographics") +
+  theme(panel.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "grey90",
+                                          linetype = "dashed"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.key = element_blank(),
+        legend.direction = "horizontal",
+        legend.position = "bottom")
+
+ggsave("./Graphs/PCT_results.png", dpi = 600, height = 12, width = 6)
+```
+
+```{r}
+results |> pivot_wider(names_from = type, values_from = PCT) |>
+  mutate(delta_all_riders = `All Riders`- Toronto,
+         delta_casual_riders = `Casual Riders`- Toronto,
+         delta_annual_riders = `Annual Riders`- Toronto) |>
+  select(Variables, starts_with("delta")) |>
+  pivot_longer(starts_with("delta"), 
+               names_to = "type", values_to = "delta") |>
+  mutate(type = factor(type, levels = c(
+    "delta_annual_riders",
+    "delta_all_riders",
+    "delta_casual_riders"), ordered = T)) -> results
+```
+
+```{r}
+results |>
+  ggplot() +
+  geom_segment(aes(x = delta, y = Variables,
+                   xend = 0, yend = Variables), color = "grey", linewidth = 3,
+               data = results[which(results$type == "delta_all_riders"),]) +
+  geom_vline(xintercept = 0, color = "#e78ac3", linewidth = 1) +
+  geom_text(aes(x = 2.5, y = "Female"), 
+            label = "Toronto Average", size = 4, color = "#e78ac3",
+            vjust = -1) +
+  geom_text(aes(x = -4, y = "Non-Indigenous"), 
+            label = "Undersupply", size = 4, color = "#e41a1c",
+            vjust = 3.5) +
+  geom_segment(aes(x = -5.7, y = "Non-Indigenous",
+                   xend = -6.7, yend = "Non-Indigenous"),
+               color = "#e41a1c",
+               position = position_nudge(y = -0.4),
+             arrow = arrow(length = unit(0.25, "cm"))) +
+  geom_text(aes(x = 4, y = "Non-Indigenous"), 
+            label = "Oversupply", size = 4, color = "#377eb8",
+            vjust = 3.5) +
+  geom_segment(aes(x = 5.5, y = "Non-Indigenous",
+                   xend = 6.5, yend = "Non-Indigenous"),
+               color = "#377eb8",
+               position = position_nudge(y = -0.4),
+             arrow = arrow(length = unit(0.25, "cm"))) +
+  # for generating correct legend
+  geom_point(aes(x = delta, y = Variables, color = type, shape = type),
+             alpha = 0) +
+  geom_point(aes(x = delta, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0.2),
+              data = results[which(results$type == "delta_annual_riders"),]) +
+  geom_point(aes(x = delta, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = 0),
+              data = results[which(results$type == "delta_all_riders"),]) +
+  geom_point(aes(x = delta, y = Variables, color = type, shape = type), size = 5, 
+              position = position_nudge(x = 0, y = -0.2),
+              data = results[which(results$type == "delta_casual_riders"),]) +
+  scale_shape_manual(
+    values = c("delta_all_riders" = 16,
+               "delta_casual_riders" = 16,
+               "delta_annual_riders" = 16),
+    name = "Weight:",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders"
+    )
+  ) +
+  scale_color_manual(
+    values = c("delta_all_riders" = "#66c2a5",
+               "delta_casual_riders" = "#fc8d62",
+               "delta_annual_riders" = "#8da0cb"),
+    name = "Weight:",
+    labels = c(
+      "Annual Riders", "All Riders", "Casual Riders"
+    )
+  ) +
+  labs(x = "Difference in Percentage", y = "Socio-demographics") +
+  theme(panel.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "grey90",
+                                          linetype = "dashed"),
+        panel.border = element_rect(color = "black", fill = NA),
+        legend.key = element_blank(),
+        legend.direction = "horizontal",
+        legend.position = "bottom")
+
+ggsave("./Graphs/delta_results.png", dpi = 600, height = 12, width = 6)
+```
+
+# Spatial Weight Matrix's Weight Function
+
+```{r}
+eq = function(x){(1-(x/1)^2)^2}
+
+ggplot() + 
+  stat_function(fun=eq,
+                data = data.frame(x=c(0, 1)), aes(x=x),
+                linewidth = 1) +
+  labs(x = TeX(r"(Distance, $\textit{d_{ij}}$, Relative to Bandwidth, $\textit{\alpha_i}$)"), 
+       y = TeX(r"(Weight, $\textit{w_{ij}}$, Before Row Standardization)"),
+       title = TeX(r"($\textit{w_{ij}}=[1-(\frac{\textit{d_{ij}}}{\textit{\alpha_i}})^2]^2$)")) +
+  scale_y_continuous(expand = c(0,0),
+                     limits = c(0, 1.01),
+                     breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+  scale_x_continuous(limits = c(0, 1),
+                     breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+  geom_segment(linetype = "dashed",
+               linewidth = 0.5,
+               aes(x = 1, y = 0,
+                   xend = 1, yend = 1)) +
+  annotate("text", x = 0.9, y = 0.6,
+           label = TeX(r"(Bandwidth, $\textit{\alpha_i}$)", output = "character"),
+           parse = T,
+           size = 4) +
+  theme(plot.title = element_text(hjust = 0.55,
+                                  margin=margin(t=40,b=-70),
+                                  size = 20),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_line(colour = "grey", 
+                                          linetype = "dashed", 
+                                          linewidth = 0.5),
+        panel.background = element_blank(),
+        axis.line.x.bottom = element_line(colour = "black", 
+                                          linewidth = 0.8),
+        axis.ticks.y.left = element_blank()
+        )
+
+ggsave("./Graphs/bisquare.png", dpi = 600,
+       height = 4.45,
+       width = 7)
+```
