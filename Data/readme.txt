@@ -1,0 +1,1 @@
+This folder contains all the raw and intermediate data used in the analysis. For a complete source of raw data check out the data_source.xlsx file.
