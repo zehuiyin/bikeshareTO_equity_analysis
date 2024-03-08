@@ -22,12 +22,57 @@ place holder...
 :::
 
 ::: {.card title="**Data:**" height=40%}
-|       **Name**      |                    **Description**                   |   **Format**    |               **Source (URL)**              | **Accessed Time** |
-|:-------------------:|:----------------------------------------------------:|:---------------:|:-------------------------------------------:|:-----------------:|
-| Bikeshare Ridership | Toronto bike-share trip data for the whole year 2023 | CSV             | [City of Toronto Open Data](https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/) | 2024-01-20        |
-| Bikeshare Stations  | Toronto bike-share station information               | JSON            | [Toronto Parking Authority through GBFS](https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information) | 2024-01-08        |
-| Road Network        | OpenStreetMap road network data for Ontario, Canada  | PBF             | [OpenStreetMap through Geofabrik](https://download.geofabrik.de/north-america/canada/ontario.html) | 2024-01-08        |
-| 2021 Census         | 2021 Canadian Census data                            | *sf* data.frame | [Statistics Canada through *cancensus* package](https://cran.r-project.org/web/packages/cancensus/index.html) | 2024-02-05        |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;border-style:solid;border-width:1px;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-btxf{background-color:#f9f9f9;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Name**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Description**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Format**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Source (URL)**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Accessed Time**</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-btxf">Bikeshare Ridership</td>
+    <td class="tg-btxf">Toronto bike-share trip data for the whole year 2023</td>
+    <td class="tg-btxf">CSV</td>
+    <td class="tg-btxf"><a href="https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/" target="_blank" rel="noopener noreferrer">City of Toronto Open Data</a></td>
+    <td class="tg-btxf">2024-01-20</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Bikeshare Stations</td>
+    <td class="tg-0pky">Toronto bike-share station information</td>
+    <td class="tg-0pky">JSON</td>
+    <td class="tg-0pky"><a href="https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information" target="_blank" rel="noopener noreferrer">Toronto Parking Authority through GBFS</a></td>
+    <td class="tg-0pky">2024-01-08</td>
+  </tr>
+  <tr>
+    <td class="tg-btxf">Road Network</td>
+    <td class="tg-btxf">OpenStreetMap road network data for Ontario, Canada</td>
+    <td class="tg-btxf">PBF</td>
+    <td class="tg-btxf"><a href="https://download.geofabrik.de/north-america/canada/ontario.html" target="_blank" rel="noopener noreferrer">OpenStreetMap through Geofabrik</a></td>
+    <td class="tg-btxf">2024-01-08</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">2021 Census</td>
+    <td class="tg-0pky">2021 Canadian Census data</td>
+    <td class="tg-0pky"><span style="font-style:italic">sf</span> data.frame</td>
+    <td class="tg-0pky"><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer">Statistics Canada through </a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"><span style="font-style:italic">cancensus</span></a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"> package</a></td>
+    <td class="tg-0pky">2024-02-05</td>
+  </tr>
+</tbody>
+</table>
 :::
 
 ## Column {height=100%}
