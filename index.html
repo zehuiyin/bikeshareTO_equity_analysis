@@ -51,7 +51,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
-    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>    
 
@@ -64,15 +64,18 @@ ul.task-list li input[type="checkbox"] {
         <div class="navbar-author">Filip Panaitescu, Shixiang Xing, and <a href="https://zehuiyin.github.io/">Zehui Yin</a></div>
       </div>
     </div>
-</div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-home" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#home" data-scrolling="false" href="#home" aria-controls="home" aria-selected="true"><span class="nav-link-text">Home</span></a></li><li class="nav-item" role="presentation"><a id="tab-references" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#references" data-scrolling="false" href="#references" aria-controls="references" aria-selected="false"><span class="nav-link-text">References</span></a></li></ul><div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://twitter.com/zehuiyin"><i class="bi bi-twitter"></i></a><a class="quarto-dashboard-link" href="https://github.com/zehuiyin/bikeshareTO_equity_analysis"><i class="bi bi-github"></i></a></div></div></div>
 </nav>
 </header>
-<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">  
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 35fr) minmax(3em, 25fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-title="**Abstract:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div id="home" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-home">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 35fr) minmax(3em, 25fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-title="**Abstract:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title">
 <strong>Abstract:</strong>
 </div>
@@ -85,7 +88,7 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card bslib-card html-fill-container" data-title="**Research Questions:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card html-fill-item html-fill-container bslib-card" data-title="**Research Questions:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title">
 <strong>Research Questions:</strong>
 </div>
@@ -101,7 +104,7 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card bslib-card html-fill-container" data-title="**Data:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card html-fill-item html-fill-container bslib-card" data-title="**Data:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title">
 <strong>Data:</strong>
 </div>
@@ -154,8 +157,8 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div><div class="bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-title="**Methods:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+</div><div class="html-fill-item html-fill-container bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-title="**Methods:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title">
 <strong>Methods:</strong>
 </div>
@@ -168,8 +171,8 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div><div class="bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-title="**Results:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+</div><div class="html-fill-item html-fill-container bslib-grid" data-height="100%" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-title="**Results:**" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title">
 <strong>Results:</strong>
 </div>
@@ -182,8 +185,40 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+</div>
+</div>
+</div><div id="references" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-references">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p>Annis, R. (2023). What Cycling Eden Can Teach the World About Bicycle Infrastructure. Bicycling. https://www.bicycling.com/culture/a43907904/what-netherlands-can-teach-the-world-about-bicycle-infrastructure/</p>
+<p>Babagoli, M. A., Kaufman, T. K., Noyes, P., &amp; Sheffield, P. E. (2019). Exploring the health and spatial equity implications of the New York City Bike share system. Journal of Transport &amp; Health, 13, 200-209. https://doi.org/10.1016/j.jth.2019.04.003</p>
+<p>Bike Share Toronto. (n.d.). FAQ. https://bikesharetoronto.com/faq/</p>
+<p>City of Toronto. (n.d.-a). ActiveTO. https://www.toronto.ca/explore-enjoy/recreation/activeto/</p>
+<p>City of Toronto. (n.d.-b). ActiveTO – Expanding the Cycling Network. https://www.toronto.ca/explore-enjoy/recreation/activeto/activeto-expanding-the-cycling-network/</p>
+<p>City of Toronto. (n.d.-c). Danforth Avenue Complete Street and Planning Study. https://www.toronto.ca/city-government/planning-development/planning-studies-initiatives/danforth-avenue-planning-study/</p>
+<p>City of Toronto. (n.d.-d). Vision Zero Plan Overview. https://www.toronto.ca/services-payments/streets-parking-transportation/road-safety/vision-zero/vision-zero-plan-overview/</p>
+<p>Cycle Toronto. (n.d.-a). Move365 is more than just bikes. https://www.cycleto.ca/move365</p>
+<p>Cycle Toronto. (n.d.-b). Move365: Connect Scarborough. https://www.cycleto.ca/scarborough</p>
+<p>El-Assi, W., Salah Mahmoud, M., &amp; Nurul Habib, K. (2017). Effects of built environment and weather on bike sharing demand: a station level analysis of commercial bike sharing in Toronto. Transportation, 44, 589-613. https://doi.org/10.1007/s11116-015-9669-z</p>
+<p>Esri. (n.d.). How Neighborhood Summary Statistics Works. ArcGIS Pro. https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/how-neighborhood-summary-statistics-works.htm Fishman, E. (2016). Bikeshare: A Review of Recent Literature. Transport Reviews, 36(1), 92–113. https://doi.org/10.1080/01441647.2015.1033036</p>
+<p>Getis, A., &amp; Ord, J. K. (1992). The analysis of spatial association by use of distance statistics. Geographical analysis, 24(3), 189-206. https://doi.org/10.1111/j.1538-4632.1992.tb00261.x</p>
+<p>Mohiuddin, H., Fitch-Polse, D. T., &amp; Handy, S. L. (2023). Does bike-share enhance transport equity? Evidence from the Sacramento, California region. Journal of Transport Geography, 109, 103588-. https://doi.org/10.1016/j.jtrangeo.2023.103588</p>
+<p>Sosa Lopez, O. (2021). Bicycle Policy in Mexico City: urban experiments and differentiated citizenship. International Journal of Urban and Regional Research, 45(3), 477-497. https://doi.org/10.1111/1468-2427.12992</p>
+<p>Toronto City Council. (2019). IE6.8 - Vision Zero 2.0 - Road Safety Plan Update. City of Toronto. https://secure.toronto.ca/council/agenda-item.do?item=2019.IE6.8</p>
+<p>von Bergmann, J., Shkolnik, D., &amp; Jacobs, A. (2021). cancensus: R package to access, retrieve, and work with Canadian Census data and geography. https://mountainmath.github.io/cancensus/</p>
+<p>Yin, Z. (2022). Spatial patterns of seasonal ridership, built environment and social demographics: A taxonomy of Bike Share Toronto stations. Zehui Yin’s Personal Website. https://zehuiyin.github.io/files/Bikeshare_Toronto.pdf</p>
+<p>Yin, Z. (2023). Travel speed and routes of the bike-share system: An analysis of Bike Share Toronto. Zehui Yin’s Personal Website. https://zehuiyin.github.io/files/routing_toronto_bikeshare.pdf</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
 
+</div>
 </div>
 </div>
 </div>
