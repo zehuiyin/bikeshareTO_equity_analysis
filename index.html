@@ -109,44 +109,104 @@ grid-auto-rows: minmax(0, 1fr);">
 <strong>Data:</strong>
 </div>
 <div class="card-body html-fill-item html-fill-container">
-<table class="table">
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;border-style:solid;border-width:1px;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-btxf{background-color:#f9f9f9;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
 <thead>
-<tr class="header">
-<th style="text-align: center;"><strong>Name</strong></th>
-<th style="text-align: center;"><strong>Description</strong></th>
-<th style="text-align: center;"><strong>Format</strong></th>
-<th style="text-align: center;"><strong>Source (URL)</strong></th>
-<th style="text-align: center;"><strong>Accessed Time</strong></th>
+<tr>
+<th class="tg-c3ow">
+<span style="font-weight:bold"><strong>Name</strong></span>
+</th>
+<th class="tg-c3ow">
+<span style="font-weight:bold"><strong>Description</strong></span>
+</th>
+<th class="tg-c3ow">
+<span style="font-weight:bold"><strong>Format</strong></span>
+</th>
+<th class="tg-c3ow">
+<span style="font-weight:bold"><strong>Source (URL)</strong></span>
+</th>
+<th class="tg-c3ow">
+<span style="font-weight:bold"><strong>Accessed Time</strong></span>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">Bikeshare Ridership</td>
-<td style="text-align: center;">Toronto bike-share trip data for the whole year 2023</td>
-<td style="text-align: center;">CSV</td>
-<td style="text-align: center;"><a href="https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/">City of Toronto Open Data</a></td>
-<td style="text-align: center;">2024-01-20</td>
+<tr>
+<td class="tg-btxf">
+Bikeshare Ridership
+</td>
+<td class="tg-btxf">
+Toronto bike-share trip data for the whole year 2023
+</td>
+<td class="tg-btxf">
+CSV
+</td>
+<td class="tg-btxf">
+<a href="https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/" target="_blank" rel="noopener noreferrer">City of Toronto Open Data</a>
+</td>
+<td class="tg-btxf">
+2024-01-20
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Bikeshare Stations</td>
-<td style="text-align: center;">Toronto bike-share station information</td>
-<td style="text-align: center;">JSON</td>
-<td style="text-align: center;"><a href="https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information">Toronto Parking Authority through GBFS</a></td>
-<td style="text-align: center;">2024-01-08</td>
+<tr>
+<td class="tg-0pky">
+Bikeshare Stations
+</td>
+<td class="tg-0pky">
+Toronto bike-share station information
+</td>
+<td class="tg-0pky">
+JSON
+</td>
+<td class="tg-0pky">
+<a href="https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information" target="_blank" rel="noopener noreferrer">Toronto Parking Authority through GBFS</a>
+</td>
+<td class="tg-0pky">
+2024-01-08
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Road Network</td>
-<td style="text-align: center;">OpenStreetMap road network data for Ontario, Canada</td>
-<td style="text-align: center;">PBF</td>
-<td style="text-align: center;"><a href="https://download.geofabrik.de/north-america/canada/ontario.html">OpenStreetMap through Geofabrik</a></td>
-<td style="text-align: center;">2024-01-08</td>
+<tr>
+<td class="tg-btxf">
+Road Network
+</td>
+<td class="tg-btxf">
+OpenStreetMap road network data for Ontario, Canada
+</td>
+<td class="tg-btxf">
+PBF
+</td>
+<td class="tg-btxf">
+<a href="https://download.geofabrik.de/north-america/canada/ontario.html" target="_blank" rel="noopener noreferrer">OpenStreetMap through Geofabrik</a>
+</td>
+<td class="tg-btxf">
+2024-01-08
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">2021 Census</td>
-<td style="text-align: center;">2021 Canadian Census data</td>
-<td style="text-align: center;"><em>sf</em> data.frame</td>
-<td style="text-align: center;"><a href="https://cran.r-project.org/web/packages/cancensus/index.html">Statistics Canada through <em>cancensus</em> package</a></td>
-<td style="text-align: center;">2024-02-05</td>
+<tr>
+<td class="tg-0pky">
+2021 Census
+</td>
+<td class="tg-0pky">
+2021 Canadian Census data
+</td>
+<td class="tg-0pky">
+<span style="font-style:italic">sf</span> data.frame
+</td>
+<td class="tg-0pky">
+<a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer">Statistics Canada through </a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"><span style="font-style:italic">cancensus</span></a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"> package</a>
+</td>
+<td class="tg-0pky">
+2024-02-05
+</td>
 </tr>
 </tbody>
 </table>
