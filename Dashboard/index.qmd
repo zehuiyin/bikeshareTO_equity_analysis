@@ -1,7 +1,14 @@
 --- 
 title: "Toward Equitable Service Provision: A Catchment Area Analysis of The Bike Share Toronto System"
 author: "Filip Panaitescu, Shixiang Xing, and [Zehui Yin](https://zehuiyin.github.io/)"
+nav-buttons:
+  - icon: twitter
+    href: https://twitter.com/zehuiyin
+  - icon: github
+    href: https://github.com/zehuiyin/bikeshareTO_equity_analysis
 --- 
+
+# Home
 
 ## Column {height=100%}
 
@@ -34,3 +41,42 @@ place holder...
 ::: {.card title="**Results:**"}
 ![](./Graphs/delta_results.png){width="50%"}![](./Graphs/PCT_results.png){width="50%"}
 :::
+
+# References
+
+Annis, R. (2023). What Cycling Eden Can Teach the World About Bicycle Infrastructure. Bicycling. https://www.bicycling.com/culture/a43907904/what-netherlands-can-teach-the-world-about-bicycle-infrastructure/
+
+Babagoli, M. A., Kaufman, T. K., Noyes, P., & Sheffield, P. E. (2019). Exploring the health and spatial equity implications of the New York City Bike share system. Journal of Transport & Health, 13, 200-209. https://doi.org/10.1016/j.jth.2019.04.003
+
+Bike Share Toronto. (n.d.). FAQ. https://bikesharetoronto.com/faq/
+
+City of Toronto. (n.d.-a). ActiveTO. https://www.toronto.ca/explore-enjoy/recreation/activeto/
+
+City of Toronto. (n.d.-b). ActiveTO – Expanding the Cycling Network. https://www.toronto.ca/explore-enjoy/recreation/activeto/activeto-expanding-the-cycling-network/
+
+City of Toronto. (n.d.-c). Danforth Avenue Complete Street and Planning Study. https://www.toronto.ca/city-government/planning-development/planning-studies-initiatives/danforth-avenue-planning-study/
+
+City of Toronto. (n.d.-d). Vision Zero Plan Overview. https://www.toronto.ca/services-payments/streets-parking-transportation/road-safety/vision-zero/vision-zero-plan-overview/
+
+Cycle Toronto. (n.d.-a). Move365 is more than just bikes. https://www.cycleto.ca/move365
+
+Cycle Toronto. (n.d.-b). Move365: Connect Scarborough. https://www.cycleto.ca/scarborough
+
+El-Assi, W., Salah Mahmoud, M., & Nurul Habib, K. (2017). Effects of built environment and weather on bike sharing demand: a station level analysis of commercial bike sharing in Toronto. Transportation, 44, 589-613. https://doi.org/10.1007/s11116-015-9669-z
+
+Esri. (n.d.). How Neighborhood Summary Statistics Works. ArcGIS Pro. https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/how-neighborhood-summary-statistics-works.htm
+Fishman, E. (2016). Bikeshare: A Review of Recent Literature. Transport Reviews, 36(1), 92–113. https://doi.org/10.1080/01441647.2015.1033036
+
+Getis, A., & Ord, J. K. (1992). The analysis of spatial association by use of distance statistics. Geographical analysis, 24(3), 189-206. https://doi.org/10.1111/j.1538-4632.1992.tb00261.x
+
+Mohiuddin, H., Fitch-Polse, D. T., & Handy, S. L. (2023). Does bike-share enhance transport equity? Evidence from the Sacramento, California region. Journal of Transport Geography, 109, 103588-. https://doi.org/10.1016/j.jtrangeo.2023.103588
+
+Sosa Lopez, O. (2021). Bicycle Policy in Mexico City: urban experiments and differentiated citizenship. International Journal of Urban and Regional Research, 45(3), 477-497. https://doi.org/10.1111/1468-2427.12992
+
+Toronto City Council. (2019). IE6.8 - Vision Zero 2.0 - Road Safety Plan Update. City of Toronto. https://secure.toronto.ca/council/agenda-item.do?item=2019.IE6.8
+
+von Bergmann, J., Shkolnik, D., & Jacobs, A. (2021). cancensus: R package to access, retrieve, and work with Canadian Census data and geography. https://mountainmath.github.io/cancensus/
+
+Yin, Z. (2022). Spatial patterns of seasonal ridership, built environment and social demographics: A taxonomy of Bike Share Toronto stations. Zehui Yin's Personal Website. https://zehuiyin.github.io/files/Bikeshare_Toronto.pdf
+
+Yin, Z. (2023). Travel speed and routes of the bike-share system: An analysis of Bike Share Toronto. Zehui Yin's Personal Website. https://zehuiyin.github.io/files/routing_toronto_bikeshare.pdf
