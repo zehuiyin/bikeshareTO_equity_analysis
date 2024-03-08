@@ -1,0 +1,7 @@
+project:
+  output-dir: ../docs
+  
+format:
+  dashboard:
+    orientation: columns
+    theme: yeti
