@@ -1,8 +1,7 @@
 project:
-  output-dir: ../docs
-  
+  output-dir: ../
+
 format:
   dashboard:
     orientation: columns
     theme: yeti
-    embed-resources: true

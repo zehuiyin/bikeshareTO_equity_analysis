@@ -26,11 +26,11 @@ place holder...
 ## Column {height=100%}
 
 ::: {.card title="**Methods:**"}
-<img src="../Graphs/Workflow.png" width="100%"/>
+![](./Graphs/Workflow.png){width="100%"}
 :::
 
 ## Column {height=100%}
 
 ::: {.card title="**Results:**"}
-<img src="../Graphs/delta_results.png" width="50%"/><img src="../Graphs/PCT_results.png" width="50%"/>
+![](./Graphs/delta_results.png){width="50%"}![](./Graphs/PCT_results.png){width="50%"}
 :::
