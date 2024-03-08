@@ -2,6 +2,8 @@
 title: "Toward Equitable Service Provision: A Catchment Area Analysis of The Bike Share Toronto System"
 author: "Filip Panaitescu, Shixiang Xing, and [Zehui Yin](https://zehuiyin.github.io/)"
 nav-buttons:
+  - icon: envelope-fill
+    href: mailto:zehui.yin@mail.utoronto.ca
   - icon: twitter
     href: https://twitter.com/zehuiyin
   - icon: github
