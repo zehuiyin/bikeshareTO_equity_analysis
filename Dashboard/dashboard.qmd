@@ -1,0 +1,40 @@
+--- 
+title: "Toward Equitable Service Provision: A Catchment Area Analysis of The Bike Share Toronto System"
+author: "Filip Panaitescu, Shixiang Xing, and [Zehui Yin](https://zehuiyin.github.io/)"
+format:
+  dashboard:
+    orientation: columns
+    theme: yeti
+--- 
+
+## Column {height=100%}
+
+::: {.card title="**Abstract:**" height=35%}
+place holder...
+:::
+
+::: {.card title="**Research Questions:**" height=25%}
+1. How equitable is the access to Bike Share Toronto for all Toronto residents, especially for population subgroups based on gender, income or ethnicity?
+2. Which Bike Share Toronto service areas have higher or lower levels of equity, and where should the system expansion be prioritized to improve the service provision equity?
+:::
+
+::: {.card title="**Data:**" height=40%}
+|       **Name**      |                    **Description**                   |   **Format**    |               **Source (URL)**              | **Accessed Time** |
+|:-------------------:|:----------------------------------------------------:|:---------------:|:-------------------------------------------:|:-----------------:|
+| Bikeshare Ridership | Toronto bike-share trip data for the whole year 2023 | CSV             | [City of Toronto Open Data](https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/) | 2024-01-20        |
+| Bikeshare Stations  | Toronto bike-share station information               | JSON            | [Toronto Parking Authority through GBFS](https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information) | 2024-01-08        |
+| Road Network        | OpenStreetMap road network data for Ontario, Canada  | PBF             | [OpenStreetMap through Geofabrik](https://download.geofabrik.de/north-america/canada/ontario.html) | 2024-01-08        |
+| 2021 Census         | 2021 Canadian Census data                            | *sf* data.frame | [Statistics Canada through *cancensus* package](https://cran.r-project.org/web/packages/cancensus/index.html) | 2024-02-05        |
+:::
+
+## Column {height=100%}
+
+::: {.card title="**Methods:**"}
+<img src="../Graphs/Workflow.png" width="100%"/>
+:::
+
+## Column {height=100%}
+
+::: {.card title="**Results:**"}
+<img src="../Graphs/delta_results.png" width="50%"/><img src="../Graphs/PCT_results.png" width="50%"/>
+:::
