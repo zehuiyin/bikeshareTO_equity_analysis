@@ -83,13 +83,13 @@ We utilize four data sources in this project, as shown in the table below.
 ::: {.card title="**Methods:**"}
 We performed our analyses in R and ArcGIS Pro. We used R for all the analyses except for Research Question 2, which required mapping and spatial analysis in ArcGIS Pro. Figure below shows the workflow of our analyses.
 
-![](./Graphs/Workflow.png){width="100%"}
+[![](./Graphs/Workflow.png){width="100%"}](./Graphs/Workflow.png)
 :::
 
 ## Column {height=100%}
 
 ::: {.card title="**Results:**"}
-![](./Graphs/delta_results.png){width="50%"}![](./Graphs/PCT_results.png){width="50%"}
+[![](./Graphs/delta_results.png){width="50%"}](./Graphs/delta_results.png)[![](./Graphs/PCT_results.png){width="50%"}](./Graphs/PCT_results.png)
 :::
 
 # References
