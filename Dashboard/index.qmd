@@ -115,11 +115,14 @@ We performed our analyses in R and ArcGIS Pro. We used R for all the analyses ex
 # Real-time System Map {orientation="rows"}
 
 ## Row {.fill height=100%}
+
+<div style="padding:0;">
 <iframe src="https://zehuiyin.github.io/toronto_bikeshare_station_info/" width="100%" height="100%" style="border:0; min-height: 800px;"></iframe>
+</div>
 
 # References {scrolling="true"}
 
-Annis, R. (2023). What Cycling Eden Can Teach the World About Bicycle Infrastructure. Bicycling. https://www.bicycling.com/culture/a43907904/what-netherlands-can-teach-the-world-about-bicycle-infrastructure/
+Annis, R. (2023). What Cycling Eden Can Teach the World About Bicycle Infrastructure. Bicycling. <https://www.bicycling.com/culture/a43907904/what-netherlands-can-teach-the-world-about-bicycle-infrastructure/>
 
 Babagoli, M. A., Kaufman, T. K., Noyes, P., & Sheffield, P. E. (2019). Exploring the health and spatial equity implications of the New York City Bike share system. Journal of Transport & Health, 13, 200-209. https://doi.org/10.1016/j.jth.2019.04.003
 
