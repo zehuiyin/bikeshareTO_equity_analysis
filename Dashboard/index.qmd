@@ -14,7 +14,7 @@ nav-buttons:
 
 # Home
 
-## Column {height=100%}
+## Column
 
 ::: {.card title="**Abstract:**" height=42%}
 Over the last two to three decades, urban centers globally have shown a growing commitment to enhancing active transportation infrastructure, including the establishment of dedicated bike lanes, bike-sharing initiatives, and comprehensive active mobility networks (City of Toronto, n.d.-a). Toronto’s endorsed docked bike-sharing program, Bike Share Toronto, has been supported by Tangerine Bank since 2011 (Bike Share Toronto, n.d.; El-Assi et al., 2017). While bike-sharing systems inherit the general advantages of cycling, they also offer unique benefits like increased convenience and potential cost savings (Fishman, 2016). Nonetheless, these systems encounter specific challenges that can impede their accessibility and equitable use among diverse demographic groups, primarily due to the fixed docking stations and associated first and last-mile connectivity issues. This study scrutinizes the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city.
@@ -80,7 +80,7 @@ We utilize four data sources in this project, as shown in the table below.
 </table>
 :::
 
-## Column {height=100%}
+## Column
 
 ::: {.card title="**Methods:**"}
 We performed our analyses in R and ArcGIS Pro. We used R for all the analyses except for Research Question 2, which required mapping and spatial analysis in ArcGIS Pro. Figure below shows the workflow of our analyses.
@@ -88,7 +88,7 @@ We performed our analyses in R and ArcGIS Pro. We used R for all the analyses ex
 [![](./Graphs/Workflow.png){width="100%"}](./Graphs/Workflow.png)
 :::
 
-## Column {height=100%}
+## Column
 
 ### Row {height=50%}
 
@@ -125,7 +125,7 @@ m@map %>% setView(-79.38917, 43.65478, zoom = 11)
 
 ### Row {height=50%}
 ::: {.card title="**Results:**"}
-
+place holder
 :::
 
 # Suitability Layers
