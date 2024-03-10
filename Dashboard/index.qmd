@@ -90,7 +90,9 @@ We performed our analyses in R and ArcGIS Pro. We used R for all the analyses ex
 
 ## Column {height=100%}
 
-::: {.card title="**Results:**"}
+### Row {height=50%}
+
+#### Column {.tabset}
 ```{r}
 #| include: false
 library(sf)
@@ -103,6 +105,7 @@ catch <- st_transform(catch, crs = 4326)
 ```
 
 ```{r}
+#| title: Catchment Area Map
 m <- mapview(catch, zcol = "all_trips",
         at = quantile(catch$all_trips, probs = seq(0, 1, 0.2)),
         col.regions = brewer.pal(9, "GnBu"),
@@ -112,7 +115,17 @@ m <- mapview(catch, zcol = "all_trips",
 m@map %>% setView(-79.38917, 43.65478, zoom = 11)
 ```
 
+::: {.card title="System Wide Equity Results"}
 [![](./Graphs/delta_results.png){width="50%"}](./Graphs/delta_results.png)[![](./Graphs/PCT_results.png){width="50%"}](./Graphs/PCT_results.png)
+:::
+
+::: {.card title="Priority Zone Map"}
+[![](./Graphs/delta_results.png){width="100%"}](./Graphs/delta_results.png)
+:::
+
+### Row {height=50%}
+::: {.card title="**Results:**"}
+
 :::
 
 # Suitability Layers
