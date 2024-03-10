@@ -91,6 +91,27 @@ We performed our analyses in R and ArcGIS Pro. We used R for all the analyses ex
 ## Column {height=100%}
 
 ::: {.card title="**Results:**"}
+```{r}
+#| include: false
+library(sf)
+library(mapview)
+library(leaflet)
+library(RColorBrewer)
+
+catch <- st_read("../Export Geo-results/catchment_areas.gpkg")
+catch <- st_transform(catch, crs = 4326)
+```
+
+```{r}
+m <- mapview(catch, zcol = "all_trips",
+        at = quantile(catch$all_trips, probs = seq(0, 1, 0.2)),
+        col.regions = brewer.pal(9, "GnBu"),
+        canvas = T,
+        layer.name = "Ridership at Catchment Area")
+
+m@map %>% setView(-79.38917, 43.65478, zoom = 11)
+```
+
 [![](./Graphs/delta_results.png){width="50%"}](./Graphs/delta_results.png)[![](./Graphs/PCT_results.png){width="50%"}](./Graphs/PCT_results.png)
 :::
 
@@ -154,6 +175,7 @@ Cycle Toronto. (n.d.-b). Move365: Connect Scarborough. https://www.cycleto.ca/sc
 El-Assi, W., Salah Mahmoud, M., & Nurul Habib, K. (2017). Effects of built environment and weather on bike sharing demand: a station level analysis of commercial bike sharing in Toronto. Transportation, 44, 589-613. https://doi.org/10.1007/s11116-015-9669-z
 
 Esri. (n.d.). How Neighborhood Summary Statistics Works. ArcGIS Pro. https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/how-neighborhood-summary-statistics-works.htm
+
 Fishman, E. (2016). Bikeshare: A Review of Recent Literature. Transport Reviews, 36(1), 92–113. https://doi.org/10.1080/01441647.2015.1033036
 
 Getis, A., & Ord, J. K. (1992). The analysis of spatial association by use of distance statistics. Geographical analysis, 24(3), 189-206. https://doi.org/10.1111/j.1538-4632.1992.tb00261.x
