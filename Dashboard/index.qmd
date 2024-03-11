@@ -94,7 +94,7 @@ We performed our analyses in R and ArcGIS Pro. We used R for all the analyses ex
 
 ## Column
 
-### Row {height=50%}
+### Row {height=60%}
 
 #### Column {.tabset}
 ```{r}
@@ -124,10 +124,10 @@ m@map %>% setView(-79.38917, 43.65478, zoom = 11)
 :::
 
 ::: {.card title="Priority Zone Map"}
-[![](./Graphs/Suitability.png){width="100%"}](./Graphs/delta_results.png)
+[![](./Graphs/Suitability.png){width="100%"}](./Graphs/Suitability.png)
 :::
 
-### Row {height=50%}
+### Row {height=40%}
 ::: {.card title="**Results:**"}
 place holder
 :::
@@ -135,19 +135,19 @@ place holder
 # Suitability Layers
 
 ::: {layout-ncol=4}
-![**Black Residents  (Weight=0.06)**](./Graphs/black_hotspots.jpg)
+[![**Black Residents  (Weight=0.06)**](./Graphs/black_hotspots.jpg)](./Graphs/black_hotspots.jpg)
 
-![**Chinese Residents (Weight=0.03)**](./Graphs/chinese_hotspots.jpg)
+[![**Chinese Residents (Weight=0.03)**](./Graphs/chinese_hotspots.jpg)](./Graphs/chinese_hotspots.jpg)
 
-![**Female Residents (Weight=0.02)**](./Graphs/female_hotspots.jpg)
+[![**Female Residents (Weight=0.02)**](./Graphs/female_hotspots.jpg)](./Graphs/female_hotspots.jpg)
 
-![**Indigenous Residents (Weight=0.55)**](./Graphs/indigenous_hotspots.jpg)
+[![**Indigenous Residents (Weight=0.55)**](./Graphs/indigenous_hotspots.jpg)](./Graphs/indigenous_hotspots.jpg)
 
-![**Latino Residents (Weight=0.13)**](./Graphs/latino_hotspots.jpg)
+[![**Latino Residents (Weight=0.13)**](./Graphs/latino_hotspots.jpg)](./Graphs/latino_hotspots.jpg)
 
-![**Low Income Residents (Weight=0.04)**](./Graphs/low-income_hotspots.jpg)
+[![**Low Income Residents (Weight=0.04)**](./Graphs/low-income_hotspots.jpg)](./Graphs/low-income_hotspots.jpg)
 
-![**$\approx1km$ Buffer around Existing Equitable Catchment Areas**](./Graphs/buffer.png)
+[![**$\approx1km$ Buffer around Existing Equitable Catchment Areas**](./Graphs/buffer.png)](./Graphs/buffer.png)
 :::
 
 # Real-time System Map {orientation="rows"}
