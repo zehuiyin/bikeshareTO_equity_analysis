@@ -124,7 +124,7 @@ m@map %>% setView(-79.38917, 43.65478, zoom = 11)
 :::
 
 ::: {.card title="Priority Zone Map"}
-[![](./Graphs/delta_results.png){width="100%"}](./Graphs/delta_results.png)
+[![](./Graphs/Suitability.png){width="100%"}](./Graphs/delta_results.png)
 :::
 
 ### Row {height=50%}
@@ -135,19 +135,19 @@ place holder
 # Suitability Layers
 
 ::: {layout-ncol=4}
-![**Layer1**](./Graphs/Workflow.png)
+![**Black Residents  (Weight=0.06)**](./Graphs/black_hotspots.jpg)
 
-![**Layer2**](./Graphs/Workflow.png)
+![**Chinese Residents (Weight=0.03)**](./Graphs/chinese_hotspots.jpg)
 
-![**Layer3**](./Graphs/Workflow.png)
+![**Female Residents (Weight=0.02)**](./Graphs/female_hotspots.jpg)
 
-![**Layer4**](./Graphs/Workflow.png)
+![**Indigenous Residents (Weight=0.55)**](./Graphs/indigenous_hotspots.jpg)
 
-![**Layer5**](./Graphs/Workflow.png)
+![**Latino Residents (Weight=0.13)**](./Graphs/latino_hotspots.jpg)
 
-![**Layer6**](./Graphs/Workflow.png)
+![**Low Income Residents (Weight=0.04)**](./Graphs/low-income_hotspots.jpg)
 
-![**Layer7**](./Graphs/Workflow.png)
+![**$\approx1km$ Buffer around Existing Equitable Catchment Areas**](./Graphs/buffer.png)
 :::
 
 # Real-time System Map {orientation="rows"}
