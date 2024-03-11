@@ -132,7 +132,9 @@ m@map %>% setView(-79.38917, 43.65478, zoom = 11)
 place holder
 :::
 
-# Suitability Layers
+# Suitability Layers {orientation="rows" scrolling="true"}
+
+## Row {height=90%}
 
 ::: {layout-ncol=4}
 [![**Black Residents  (Weight=0.06)**](./Graphs/black_hotspots.jpg)](./Graphs/black_hotspots.jpg)
@@ -147,8 +149,15 @@ place holder
 
 [![**Low Income Residents (Weight=0.04)**](./Graphs/low-income_hotspots.jpg)](./Graphs/low-income_hotspots.jpg)
 
-[![**$\approx1km$ Buffer around Existing Equitable Catchment Areas**](./Graphs/buffer.png)](./Graphs/buffer.png)
+[![**Buffer ($\approx1km$) around Existing Equitable Catchment Areas (Weight=1.2)**](./Graphs/buffer.png)](./Graphs/buffer.png)
 :::
+
+## Row {height=10%}
+
+Note:
+
+1. Socio-demographic layers are measured in percentages and the weights are the inverse of the mean value, $\frac{1}{\mu}$. 
+2. The buffer layer is dummy coded (1 for fall inside the buffer and 0 otherwise).
 
 # Real-time System Map {orientation="rows"}
 
