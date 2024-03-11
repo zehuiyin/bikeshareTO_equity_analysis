@@ -5,3 +5,4 @@ format:
   dashboard:
     orientation: columns
     theme: yeti
+    html-math-method: katex

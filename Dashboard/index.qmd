@@ -154,9 +154,9 @@ place holder
 
 ## Row {height=10%}
 
-Note:
+Notes:
 
-1. Socio-demographic layers are measured in percentages and the weights are the inverse of the mean value, $\frac{1}{\mu}$. 
+1. Socio-demographic layers are measured in percentages and the weights are the inverse of their specific mean values, $w_i=\frac{1}{\mu_i}$. 
 2. The buffer layer is dummy coded (1 for fall inside the buffer and 0 otherwise).
 
 # Real-time System Map {orientation="rows"}
