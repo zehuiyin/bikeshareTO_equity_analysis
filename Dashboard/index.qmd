@@ -7,7 +7,7 @@ include-in-header:
       <link rel = "icon" href = "./Graphs/icon.svg" />
 nav-buttons:
   - icon: file-earmark-pdf-fill
-    href: ./Files/poster.pdf
+    href: ./Poster/Poster.pdf
   - icon: envelope-fill
     href: mailto:zehui.yin@mail.utoronto.ca
   - icon: twitter

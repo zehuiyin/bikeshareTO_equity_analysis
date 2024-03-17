@@ -352,3 +352,66 @@ ggsave("./Graphs/bisquare.png", dpi = 600,
        height = 4.45,
        width = 7)
 ```
+
+# Catchment Area Map
+
+```{r}
+library(sf)
+library(ggspatial)
+```
+
+```{r}
+catch <- st_read("../Export Geo-results/catchment_areas.gpkg")
+catch <- st_transform(catch, crs = 4326)
+
+catch$color <- cut(catch$all_trips,
+    breaks = quantile(catch$all_trips, probs = seq(0, 1, 0.2)),
+    include.lowest = T,
+    ordered_result = T)
+```
+
+```{r}
+ggplot() +
+  annotation_map_tile(type = "cartolight",
+                      zoomin = 0,
+                      cachedir = "./rosm.cache") +
+  geom_sf(data = catch, aes(fill = color),
+          color = "grey60") +
+  scale_fill_brewer(palette = "GnBu",
+                    name = "Total Ridership",
+                    labels = c("0-1,407",
+                               "1,407-4,751",
+                               "4,751-11,984",
+                               "11,984-25,423",
+                               "25,423-98,508")) +
+  labs(x = "", y = "") +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.key = element_blank(),
+        legend.position = c(0.85, 0.18),
+        legend.background = element_blank(),
+        legend.text = element_text(color = "black"),
+        legend.margin=margin(t = -0.5, unit='cm')) +
+  annotation_scale(text_col="black",
+                   line_col="black",
+                   pad_x = unit(0.4, "native"),
+                   pad_y = unit(0.04, "native"),
+                   plot_unit = "km") +
+  annotation_north_arrow(height = unit(0.1, "native"),
+                         width = unit(0.1, "native"),
+                         pad_x = unit(0.875, "native"),
+                         pad_y = unit(0.6, "native"),
+                         style = north_arrow_fancy_orienteering(
+                                   line_width = 1,
+                                   line_col = "black",
+                                   fill = c("white", "black"),
+                                   text_col = "black",
+                                   text_family = "",
+                                   text_face = NULL,
+                                   text_size = 7,
+                                   text_angle = 0
+                        ))
+
+ggsave("./Graphs/catch.png", dpi = 600)
+```
+
