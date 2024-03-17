@@ -113,6 +113,8 @@ Then, the Toronto Bike Share system-wide socio-demographics were calculated as a
 We applied the Multivariate Clustering Geoprocessing tool (K-means Clustering) in ArcGIS Pro to the eight socio-demographic variables of the bike share stations in order to group them into five clusters based on their attribute similarities. From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
 
 We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the census dissemination areas that have high or low values of the socio-demographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$ and $\sum_j w_{ij}=1$.
+
+[![](./Graphs/bisquare.png){width="50%"}](./Graphs/bisquare.png)[![](./Graphs/box_plot.jpg){width="50%"}](./Graphs/box_plot.jpg)
 :::
 
 ::: {.card title="Suitability Analysis"}
