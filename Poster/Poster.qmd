@@ -1,0 +1,81 @@
+---
+title: "Toward Equitable Service Provision: A Catchment Area Analysis of The Bike Share Toronto System"
+format:
+  poster-typst: 
+    size: "36x24"
+    poster-authors: "Filip Panaitescu, Shixiang Xing, and Zehui Yin"
+    departments: "Department of Human Geography"
+    institution-logo: "./images/logo.png"
+    footer-text: "GGRD30H3: GIS Research Project"
+    footer-url: "https://zehuiyin.github.io/"
+    footer-emails: "zehuiyin@gmail.com"
+    footer-color: "a6cee3"
+    keywords: ["Bikeshare", "Equity", "Spatial Analysis", "Toronto"]
+---
+
+# Introduction
+
+In the past 20-30 years, cities around the world have increasingly taken an interest in expanding and promoting active mobility means and networks, such as providing dedicated or protected bike lanes, bike share programs, and active mobility networks (City of Toronto, n.d.-a). Bike Share Toronto is Toronto’s official docked bike-sharing system, sponsored by Tangerine Bank since 2011 (Bike Share Toronto, n.d.; El-Assi et al., 2017). Bike-sharing not only inherits the benefits of cycling but also provides additional incentives such as convenience and financial savings for its users (Fishman, 2016). However, bike-sharing also faces challenges and barriers that may limit its accessibility and equity for diverse populations, especially due to its docked nature and the arising first and last-mile issues. With the golden exception of the Netherlands’ extensive biking infrastructure, many cities’ increasing interest in expanding active mobility networks has rarely extended beyond downtown districts (Annis, 2023; Fishman, 2016). Bike-sharing can be a powerful tool for deterring social exclusion through improved mobility for the residents when being properly operated. Therefore, to foster an inclusive and just society, it is important to consider service provision equity when developing and expanding bike-sharing systems.
+
+# Objectives
+
+This project aims to examine the Bike Share Toronto system from an equity perspective. We focus on the station catchment areas and the population groups that reside within them, and we address the following 2 research questions (RQ):
+
+1. How equitable is the access to Bike Share Toronto for all Toronto residents, especially for population subgroups based on gender, income or ethnicity?
+
+2. Which Bike Share Toronto service areas have higher or lower levels of equity, and where should the system expansion be prioritized to improve the service provision equity?
+
+# Data
+
+@tbl-1 below summarizes the four open data sources utilized in this project.
+
+|       **Name**      |                    **Description**                   |   **Format**  |               **Source (URL)**              | **Accessed Time** |
+|:-------------------:|:----------------------------------------------------:|:-------------:|:-------------------------------------------:|:-----------------:|
+| Bikeshare Ridership | Toronto bike-share trip data for the whole year 2023 | CSV           | City of Toronto Open Data                   | 2024-01-20        |
+| Bikeshare Stations  | Toronto bike-share station information               | JSON          | Toronto Parking Authority through GBFS      | 2024-01-08        |
+| Road Network        | OpenStreetMap road network data for Ontario, Canada  | PBF           | OpenStreetMap through Geofabrik             | 2024-01-08        |
+| 2021 Census         | 2021 Canadian Census data                            | *sf* data.frame | Statistics Canada through *cancensus* package | 2024-02-05        |
+
+: Data Sources {#tbl-1}
+
+# Methods
+
+We performed our analyses in *R* and ArcGIS Pro. Figure 1 below shows the workflow of our analyses.
+
+![Workflow Diagram](./images/Workflow.png){width="60%"}
+
+## Routing
+
+To measure the coverage area of each bike share station, we calculated the 15-minute walking distance network buffers around them, using the *r5r* package in *R* (Pereira et al., 2021). To avoid overlapping in catchment areas, we created Voronoi polygons (Okabe et al., 2009) based on Euclidean distance for each station and intersected them with the network buffers to get the non-overlapping coverage areas for each bike share station.
+
+## Areal Weighted Interpolation
+
+To construct metrics quantifying the equity of service provision, we calculated eight sociodemographic variables: the percentages of Female, Indigenous people, White people, Chinese people, Black people, Latino people, people with household total income below \$40,000, and people with household total income above \$100,000 in 2020 for each census dissemination area in the City of Toronto. We used the areal package in *R* (Prener & Revord, 2019) to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method. The Toronto Bike Share system-wide sociodemographics as a weighted average based on ridership at each station $\overline{x}=\frac{\sum n\times x}{n}$.
+
+## Cluster Analaysis and Hotspot Analysis
+
+We applied the Multivariate Clustering Geoprocessing tool to the 8 sociodemographic variables of the bike share stations in order to group them into 5 clusters based on their attribute similarities. From these five clusters, we indentified existing catchment areas that are relatively more equitable compared to others.
+
+We used Hot Spot Analysis (Getis-Ord $Gi^*$) to identify the census dissemination areas (DAs) that have high or low values of the sociodemographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$.
+
+## Suitability Analysis
+
+We identified hot spots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. we created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by cluster analysis. We computed a weighted sum of these layers to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
+
+# Conclusion
+
+This study scrutinizes the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city.
+
+# Discussion
+
+![System Wide Equity Results](./images/agg_results.png){width="60%"}
+
+![Priority Zone Map](./images/Suitability.png){width="60%"}
+
+# References
+
+```{=typst} 
+#set text(9pt)
+```
+
+
