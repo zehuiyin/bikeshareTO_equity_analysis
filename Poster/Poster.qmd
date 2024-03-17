@@ -50,17 +50,17 @@ To measure the coverage area of each bike share station, we calculated the 15-mi
 
 ## Areal Weighted Interpolation
 
-To construct metrics quantifying the equity of service provision, we calculated eight sociodemographic variables: the percentages of Female, Indigenous people, White people, Chinese people, Black people, Latino people, people with household total income below \$40,000, and people with household total income above \$100,000 in 2020 for each census dissemination area in the City of Toronto. We used the areal package in *R* (Prener & Revord, 2019) to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method. The Toronto Bike Share system-wide sociodemographics as a weighted average based on ridership at each station $\overline{x}=\frac{\sum n\times x}{n}$.
+To construct metrics quantifying the equity of service provision, we calculated eight socio-demographic variables: the percentages of Female, Indigenous people, White people, Chinese people, Black people, Latino people, people with household total income below \$40,000, and people with household total income above \$100,000 in 2020 for each census dissemination area in the City of Toronto. We used the *areal* package in *R* (Prener & Revord, 2019) to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method. Then, the Toronto Bike Share system-wide socio-demographics were calculated as a weighted average based on ridership at each station, $\overline{x}=\frac{\sum n\times x}{n}$.
 
 ## Cluster Analaysis and Hotspot Analysis
 
-We applied the Multivariate Clustering Geoprocessing tool to the 8 sociodemographic variables of the bike share stations in order to group them into 5 clusters based on their attribute similarities. From these five clusters, we indentified existing catchment areas that are relatively more equitable compared to others.
+We applied the Multivariate Clustering Geoprocessing tool in ArcGIS Pro to the eight socio-demographic variables of the bike share stations in order to group them into five clusters based on their attribute similarities. From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
 
-We used Hot Spot Analysis (Getis-Ord $Gi^*$) to identify the census dissemination areas (DAs) that have high or low values of the sociodemographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$.
+We used Hot Spot Analysis (Getis-Ord $Gi^*$) to identify the census dissemination areas (DAs) that have high or low values of the socio-demographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$.
 
 ## Suitability Analysis
 
-We identified hot spots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. we created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by cluster analysis. We computed a weighted sum of these layers to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
+We identified socio-demographic hot spots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. we created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by the cluster analysis. We computed a weighted sum of these layers to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hot spot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
 
 # Conclusion
 
@@ -68,9 +68,9 @@ This study scrutinizes the Bike Share Toronto system through the lens of equity.
 
 # Discussion
 
-![System Wide Equity Results](./images/agg_results.png){width="60%"}
+![System Wide Equity Results](./images/agg_results.png){width="100%"}
 
-![Priority Zone Map](./images/Suitability.png){width="60%"}
+![Priority Zone Map (Left) and Low-income Population Hot Spot Map (Right)](./images/suitability_low_income.png){width="100%"}
 
 # References
 
