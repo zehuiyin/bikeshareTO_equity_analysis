@@ -16,7 +16,7 @@ nav-buttons:
     href: https://github.com/zehuiyin/bikeshareTO_equity_analysis
 --- 
 
-# Home {scrolling="false"}
+# Home
 
 ## Column
 
