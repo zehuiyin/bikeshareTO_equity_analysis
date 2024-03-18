@@ -4,16 +4,16 @@ format:
   poster-typst: 
     size: "36x24"
     title-font-size: 44
-    authors-font-size: 30
+    authors-font-size: 24
     poster-authors: "Filip Panaitescu, Shixiang Xing, and Zehui Yin"
-    departments: "Department of Human Geography"
+    departments: "Department of Human Geography, University of Toronto Scarborough"
     institution-logo: "./images/logo.png"
     footer-text: "GGRD30H3: GIS Research Project (2024 Winter)"
     footer-url: "https://zehuiyin.github.io/"
     footer-emails: "zehuiyin@gmail.com"
     footer-color: "a6cee3"
     footer-text-font-size: 30
-    footer-url-font-size: 28
+    footer-url-font-size: 24
     keywords: ["Bikeshare", "Equity", "Spatial Analysis", "Toronto"]
 ---
 
@@ -73,8 +73,6 @@ Then, the Toronto Bike Share system-wide socio-demographics were calculated as a
 
 ## Cluster Analaysis and Hotspot Analysis
 
-![Distance Decay Function Graph (Left) and Clustering Boxplots (Right)](./images/decay_boxplot.png){width="100%"}
-
 We applied the Multivariate Clustering Geoprocessing tool (K-means Clustering) in ArcGIS Pro to the eight socio-demographic variables of the bike share stations in order to group them into five clusters based on their attribute similarities. From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
 
 We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the census dissemination areas that have high or low values of the socio-demographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$ and $\sum_j w_{ij}=1$.
@@ -85,11 +83,11 @@ We identified socio-demographic hotspots with a confidence level exceeding 90% a
 
 # Discussion and Conclusion
 
-![System Wide Equity Results](./images/agg_results.png){width="100%"}
+We scrutinized the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city. The areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
+
+![System Wide Equity Results](./images/agg_results.png){width="80%"}
 
 ![Priority Zone Map (Left) and Low-income Population Hotspot Map (Right)](./images/suitability_low_income.png){width="100%"}
-
-We scrutinized the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city. The areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
 
 Our analysis is subject to two primary constraints: 1\) Due to the unavailability of historical data for bike share stations, our study is based on real-time station data. 2\) The delineation of non-overlapping catchment areas was performed using Euclidean distance. While this method provides a general overview, it does not account for the actual travel distance along the road network, which could offer a more precise representation.
 
