@@ -12,6 +12,8 @@ format:
     footer-url: "https://zehuiyin.github.io/"
     footer-emails: "zehuiyin@gmail.com"
     footer-color: "a6cee3"
+    footer-text-font-size: 30
+    footer-url-font-size: 28
     keywords: ["Bikeshare", "Equity", "Spatial Analysis", "Toronto"]
 ---
 
