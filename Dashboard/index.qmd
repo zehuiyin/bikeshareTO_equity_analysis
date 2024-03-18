@@ -178,7 +178,7 @@ We scrutinized the Bike Share Toronto system through the lens of equity. Employi
 
 [![**Low Income Residents (Weight=0.04)**](./Graphs/low-income_hotspots.jpg)](./Graphs/low-income_hotspots.jpg)
 
-[![**Buffer ($\approx1km$) around Existing Equitable Catchment Areas (Weight=1.2)**](./Graphs/buffer.png)](./Graphs/buffer.png)
+[![**Buffer ($\approx1km$) around Existing Equitable Catchment Areas (Weight=1.2)**](./Graphs/buffer_cluster.png)](./Graphs/buffer_cluster.png)
 :::
 
 ## Row {height=10%}
