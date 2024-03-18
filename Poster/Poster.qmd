@@ -71,7 +71,7 @@ Areal weighted interpolation involves four steps:
 
 Then, the Toronto Bike Share system-wide socio-demographics were calculated as a weighted average based on ridership at each station, $\overline{x}=\frac{\sum n\times x}{n}$.
 
-## Cluster Analaysis and Hotspot Analysis
+## Cluster Analysis and Hotspot Analysis
 
 We applied the Multivariate Clustering Geoprocessing tool (K-means Clustering) in ArcGIS Pro to the eight socio-demographic variables of the bike share stations in order to group them into five clusters based on their attribute similarities. From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
 
