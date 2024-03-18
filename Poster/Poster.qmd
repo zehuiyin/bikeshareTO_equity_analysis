@@ -52,7 +52,7 @@ We performed our analyses in *R* and ArcGIS Pro. Figure 1 below shows the workfl
 
 To measure the coverage area of each bike share station, we calculated the 15-minute walking distance network buffers around them, using the *r5r* package in *R* (Pereira et al., 2021). To avoid overlapping in catchment areas, we created Voronoi polygons (Okabe et al., 2009) based on Euclidean distance for each station and intersected them with the network buffers to get the non-overlapping coverage areas for each bike share station. Figure 1 above shows the non-overlapping catchment for each station.
 
-![Workflow Diagram (Left) and Catchment Area Map (Right)](./images/workflow_study_area.png){width="100%"}
+![Workflow Diagram (Left) and Non-overlapping Catchment Area Map (Right)](./images/workflow_study_area.png){width="100%"}
 
 ## Areal Weighted Interpolation
 
