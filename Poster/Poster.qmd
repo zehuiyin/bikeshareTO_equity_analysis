@@ -8,7 +8,7 @@ format:
     poster-authors: "Filip Panaitescu, Shixiang Xing, and Zehui Yin"
     departments: "Department of Human Geography"
     institution-logo: "./images/logo.png"
-    footer-text: "GGRD30H3: GIS Research Project"
+    footer-text: "GGRD30H3: GIS Research Project (2024 Winter)"
     footer-url: "https://zehuiyin.github.io/"
     footer-emails: "zehuiyin@gmail.com"
     footer-color: "a6cee3"
