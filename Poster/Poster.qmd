@@ -83,7 +83,7 @@ We identified socio-demographic hotspots with a confidence level exceeding 90% a
 
 # Discussion and Conclusion
 
-We scrutinized the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city. The areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
+We scrutinized the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, based on Figure 2, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city. Based on Figure 3, the areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
 
 ![System Wide Equity Results](./images/agg_results.png){width="80%"}
 
