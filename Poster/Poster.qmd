@@ -83,15 +83,15 @@ We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the
 
 We identified socio-demographic hotspots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. we created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by the cluster analysis. We computed a weighted sum of these layers to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
 
-# Discussion
+# Discussion and Conclusion
 
 ![System Wide Equity Results](./images/agg_results.png){width="100%"}
 
 ![Priority Zone Map (Left) and Low-income Population Hotspot Map (Right)](./images/suitability_low_income.png){width="100%"}
 
-# Conclusion
-
 We scrutinized the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city. The areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
+
+Our analysis is subject to two primary constraints: 1\) Due to the unavailability of historical data for bike share stations, our study is based on real-time station data. 2\) The delineation of non-overlapping catchment areas was performed using Euclidean distance. While this method provides a general overview, it does not account for the actual travel distance along the road network, which could offer a more precise representation.
 
 # References
 
