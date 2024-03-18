@@ -396,8 +396,7 @@ ggplot() +
   annotation_scale(text_col="black",
                    line_col="black",
                    pad_x = unit(0.4, "native"),
-                   pad_y = unit(0.04, "native"),
-                   plot_unit = "km") +
+                   pad_y = unit(0.04, "native")) +
   annotation_north_arrow(height = unit(0.1, "native"),
                          width = unit(0.1, "native"),
                          pad_x = unit(0.875, "native"),
