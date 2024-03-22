@@ -56,13 +56,13 @@ To measure the coverage area of each bike share station, we calculated the 15-mi
 
 ## Areal Weighted Interpolation
 
-To construct metrics quantifying the service provision equity, we calculated eight socio-demographic variables: the percentages of Female, Indigenous people, White people, Chinese people, Black people, Latino people, people with household total income below \$40,000, and people with household total income above \$100,000 in 2020 for each census dissemination area in the City of Toronto. We used the *areal* package in *R* (Prener & Revord, 2019) to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method. 
+To construct metrics quantifying the service provision equity, we calculated eight socio-demographic variables: the percentages of Females, Indigenous people, White people, Chinese people, Black people, Latino people, people with household total income below \$40,000, and people with household total income above \$100,000 in 2020 for each census dissemination area (DA) in Toronto. We used the *areal* package in *R* (Prener & Revord, 2019) to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method. 
 
 ::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
 
 Areal weighted interpolation involves four steps:
 
-1. Intersecting the non-overlapping coverage areas with the census dissemination areas.
+1. Intersecting the non-overlapping coverage areas with the census DAs.
 2. Calculating an areal weight for each intersected feature, using $W_i=\frac{A_i}{\sum_i A_{ik}}$.
 3. Estimating the share of the population value that occupies the intersected feature, using $E_i=V_j\times W_i$.
 4. Summarizing the data based on the target identification number, using $G_k=\sum_i E_{ik}$.
@@ -75,7 +75,7 @@ Then, the Toronto Bike Share system-wide socio-demographics were calculated as a
 
 We applied the Multivariate Clustering Geoprocessing tool (K-means Clustering) in ArcGIS Pro to the eight socio-demographic variables of the bike share stations in order to group them into five clusters based on their attribute similarities. From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
 
-We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the census dissemination areas that have high or low values of the socio-demographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$ and $\sum_j w_{ij}=1$.
+We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the census DAs that have high or low values of the socio-demographic variables, compared to the surrounding areas. We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$ and $\sum_j w_{ij}=1$.
 
 ## Suitability Analysis
 
