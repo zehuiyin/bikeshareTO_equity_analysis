@@ -93,7 +93,7 @@ We utilize four data sources in this project, as shown in the table below.
 
 ### Row {.tabset height=50%}
 ::: {.card title="Catchment Area Analysis"}
-To measure the coverage area of each bike share station, we calculated the 15-minute walking distance network buffers around them, using the *r5r* package in *R* (Pereira et al., 2021). To avoid overlapping in catchment areas, we created Voronoi polygons (Okabe et al., 2009) based on Euclidean distance for each station and intersected them with the network buffers to get the non-overlapping coverage areas for each bike share station. The interactive Map shows the non-overlapping catchment for each station.
+To measure the coverage area of each bike share station, we calculated the 15-minute walking distance network buffers around them, using the *r5r* package in *R* (Pereira et al., 2021). To avoid overlapping in catchment areas, we created Voronoi polygons (Okabe et al., 2009) based on Euclidean distance for each station and intersected them with the network buffers to get the non-overlapping coverage areas for each bike share station. The interactive map below shows the non-overlapping catchment for each station.
 
 ```{r}
 #| include: false
@@ -150,7 +150,8 @@ We identified socio-demographic hotspots with a confidence level exceeding 90% a
 #### Column {.tabset}
 
 ::: {.card title="System Wide Equity Results"}
-[![](./Graphs/delta_results.png){width="50%"}](./Graphs/delta_results.png)[![](./Graphs/PCT_results.png){width="50%"}](./Graphs/PCT_results.png)
+[![](./Graphs/PCT_results_flip.png){width="100%"}](./Graphs/PCT_results_flip.png)
+[![](./Graphs/delta_results_flip.png){width="100%"}](./Graphs/delta_results_flip.png)
 :::
 
 ::: {.card title="Priority Zone Map"}

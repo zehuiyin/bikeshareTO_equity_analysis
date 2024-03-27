@@ -4,5 +4,6 @@ project:
 format:
   dashboard:
     orientation: columns
-    theme: yeti
+    theme: minty
     html-math-method: katex
+    logo: ./Poster/images/g4.png
