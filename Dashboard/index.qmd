@@ -9,7 +9,7 @@ nav-buttons:
   - icon: file-earmark-pdf-fill
     href: ./Poster/Poster.pdf
   - icon: envelope-fill
-    href: mailto:zehui.yin@mail.utoronto.ca
+    href: mailto:zehuiyin@gmail.com
   - icon: twitter
     href: https://twitter.com/zehuiyin
   - icon: github
@@ -20,8 +20,12 @@ nav-buttons:
 
 ## Column
 
-::: {.card title="**Abstract**" height=42%}
-Over the last two to three decades, urban centers globally have shown a growing commitment to enhancing active transportation infrastructure, including the establishment of dedicated bike lanes, bike-sharing initiatives, and comprehensive active mobility networks (City of Toronto, n.d.-a). Toronto’s endorsed docked bike-sharing program, Bike Share Toronto, has been supported by Tangerine Bank since 2011 (Bike Share Toronto, n.d.; El-Assi et al., 2017). While bike-sharing systems inherit the general advantages of cycling, they also offer unique benefits like increased convenience and potential cost savings (Fishman, 2016). Nonetheless, these systems encounter specific challenges that can impede their accessibility and equitable use among diverse demographic groups, primarily due to the fixed docking stations and associated first and last-mile connectivity issues. This study scrutinizes the Bike Share Toronto system through the lens of equity. Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. Additionally, we performed a suitability analysis to pinpoint priority zones for potential network expansion, aiming to bolster equitable access across the city.
+::: {.card title="**Introduction**" height=44%}
+In the past 20-30 years, cities around the world have increasingly taken an interest in expanding and promoting active mobility means and networks, such as providing dedicated or protected bike lanes, bike share programs, and active mobility networks (City of Toronto, n.d.). Bike Share Toronto is Toronto’s official docked bike-sharing system, sponsored by Tangerine Bank since 2011 (Bike Share Toronto, n.d.; El-Assi et al., 2017). Bike-sharing not only inherits the benefits of cycling but also provides additional incentives such as convenience and financial savings for its users (Fishman, 2016). 
+
+Despite these benefits, bike-sharing also faces challenges and barriers that may limit its accessibility and equity for diverse populations, especially due to its docked nature and the arising first and last-mile issues. With the golden exception of the Netherlands’ extensive biking infrastructure, many cities’ increasing interest in expanding active mobility networks has rarely extended beyond downtown districts (Annis, 2023; Fishman, 2016). 
+
+Bike-sharing has the potential to combat social exclusion by providing improved mobility options, but this requires careful operation and management. As such, ensuring equitable service provision is a critical consideration in the development and expansion of bike-sharing systems, to promote an inclusive and equitable society.
 :::
 
 ::: {.card title="**Research Questions**" height=18%}
@@ -29,7 +33,7 @@ Over the last two to three decades, urban centers globally have shown a growing 
 2. Which Bike Share Toronto service areas have higher or lower levels of equity, and where should the system expansion be prioritized to improve the service provision equity?
 :::
 
-::: {.card title="**Data**" height=40%}
+::: {.card title="**Data**" height=38%}
 We utilize four data sources in this project, as shown in the table below.
 <style type="text/css">
 .tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;border-style:solid;border-width:1px;}
