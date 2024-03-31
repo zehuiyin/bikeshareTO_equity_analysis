@@ -1,13 +1,14 @@
 --- 
 title: "Toward Equitable Service Provision: A Catchment Area Analysis of The Bike Share Toronto System"
 author: "Filip Panaitescu, Shixiang Xing, and [Zehui Yin](https://zehuiyin.github.io/)"
-favicon: ../Graphs/icon.svg
 include-in-header:
   - text: |
       <link rel = "icon" href = "./Graphs/icon.svg" />
 nav-buttons:
-  - icon: file-earmark-pdf-fill
+  - icon: postcard-fill
     href: ./Poster/Poster.pdf
+  - icon: file-earmark-pdf-fill
+    href: ./Report/Report.pdf
   - icon: envelope-fill
     href: mailto:zehuiyin@gmail.com
   - icon: twitter
@@ -171,6 +172,8 @@ Our analysis is subject to two primary constraints:
 1. Due to the unavailability of historical data for bike share stations, our study is based on real-time station data accessed on January 8, 2024.
 
 2. The delineation of non-overlapping catchment areas was performed using Euclidean distance. While this method provides a general overview, it does not account for the actual travel distance along the road network.
+
+For more details, you can access the [poster](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Poster/Poster.pdf) and the [report](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Report/Report.pdf).
 :::
 
 # Suitability Layers {orientation="rows" scrolling="true"}
