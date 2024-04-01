@@ -176,7 +176,7 @@ Our analysis is subject to two primary constraints:
 For more details, you can access the [poster](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Poster/Poster.pdf) and the [report](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Report/Report.pdf).
 :::
 
-# Suitability Layers {orientation="rows" scrolling="true"}
+# Suitability Analysis Layers {orientation="rows" scrolling="true"}
 
 ## Row {height=90%}
 
