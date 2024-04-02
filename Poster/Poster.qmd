@@ -79,7 +79,7 @@ We used Hotspot Analysis or Getis-Ord $Gi^*$ (Getis & Ord, 1992) to identify the
 
 ## Suitability Analysis
 
-We identified socio-demographic hotspots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. we created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by the cluster analysis. We computed a weighted sum of these raster layers in ArcGIS Pro to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
+We identified socio-demographic hotspots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. We created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by the cluster analysis. We computed a weighted sum of these raster layers in ArcGIS Pro to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
 
 # Discussion and Conclusion
 

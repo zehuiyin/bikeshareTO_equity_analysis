@@ -1,0 +1,246 @@
+---
+title: "Toward Equitable Service Provision"
+subtitle: "A Catchment Area Analysis of The Bike Share Toronto System"
+author: "Zehui Yin, Filip Panaitescu, and Shixiang Xing"
+format: 
+  revealjs:
+    slide-number: true
+    logo: ../Poster/images/g4.png
+    footer: <https://zehuiyin.github.io/>
+execute: 
+  freeze: true
+include-in-header:
+  - text: |
+      <link rel = "icon" href = "../Graphs/icon.svg" />
+      <style>
+      #title-slide .title {
+        font-size: 1.5em;
+        color: #1f78b4;
+      }
+      
+      #title-slide .subtitle {
+        font-size: 1.25em;
+        color: #1f78b4;
+      }
+      </style>
+---
+
+## About Me
+
+* Undergraduate Student at University of Toronto Scarborough (UTSC)
+  - Major in Economics for Management Studies
+  - Minor in GIS and Applied Statistics
+* Research Assistant in the Suburban Mobility Cluster at Department of Human Geography at UTSC
+* Incoming Geography PhD Student at McMaster University this Fall
+
+## The Team and Project
+
+* 3 Undergraduate Students at UTSC
+* This project was completed for the course GGRD30H3: GIS Research Project at UTSC in Winter 2024.
+* Supervised by Dr. Glenn Brauen, Associate Professor, Department of Human Geography at UTSC
+
+## Table of Contents
+
+* Background and Motivation
+* Research Questions
+* Data and Method
+  - Catchment Area Analysis
+  - Areal Weighted Interpolation
+  - Cluster Analaysis and Hotspot Analysis
+  - Suitability Analysis
+* Results and Discussion
+* Q&A
+
+## Background and Motivation
+
+* In the past 20-30 years, cities around the world have increasingly taken an interest in expanding and promoting active mobility means and networks.
+* Bike Share Toronto is Toronto’s official docked bike-sharing system, sponsored by Tangerine Bank since 2011.
+* Bikeshare not only inherits the benefits of cycling but also provides additional incentives such as convenience and financial savings for its users.
+
+## Background and Motivation
+
+* Bikeshare also faces challenges and barriers that may limit its accessibility and equity for diverse populations, especially due to its docked nature and the arising first and last-mile issues.
+* Bikeshare has the potential to combat social exclusion by providing improved mobility options, but this requires careful operation and management. 
+
+## Background and Motivation
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r, out.width="100%"}
+library(sf)
+library(mapview)
+library(arrow)
+library(leaflet)
+library(RColorBrewer)
+
+stations <- read_parquet("../Data/stations.parquet")
+stations <- st_as_sf(stations, coords = c("lon", "lat"), crs = 4326)
+m <- mapview(stations,
+        layer.name = "Bikeshare Stations")
+
+m@map %>% setView(-79.38917, 43.65478, zoom = 11)
+```
+:::
+
+::: {.column width="40%"}
+* Different population groups are not uniformly distributed throughout the City.
+* Bikeshare stations mostly are located in the downtown core of Toronto.
+:::
+
+::::
+
+::: footer
+Bikeshare Station Data Collected on 2024-01-08.
+:::
+
+## Research Questions
+
+1. How equitable is the access to Bike Share Toronto for all Toronto residents, especially for population subgroups based on gender, income or ethnicity?
+2. Which Bike Share Toronto service areas have higher or lower levels of equity, and where should the system expansion be prioritized to improve the service provision equity?
+
+## Data and Method
+
+<p align="center">
+  ![](../Graphs/Workflow.png){width="60%"}
+</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;border-style:solid;border-width:1px;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-btxf{background-color:#f9f9f9;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Name**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Description**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Format**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Source (URL)**</span></th>
+    <th class="tg-c3ow"><span style="font-weight:bold">**Accessed Time**</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-btxf">Bikeshare Ridership</td>
+    <td class="tg-btxf">Toronto bike-share trip data for the whole year 2023</td>
+    <td class="tg-btxf">CSV</td>
+    <td class="tg-btxf"><a href="https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/" target="_blank" rel="noopener noreferrer">City of Toronto Open Data</a></td>
+    <td class="tg-btxf">2024-01-20</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Bikeshare Stations</td>
+    <td class="tg-0pky">Toronto bike-share station information</td>
+    <td class="tg-0pky">JSON</td>
+    <td class="tg-0pky"><a href="https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information" target="_blank" rel="noopener noreferrer">Toronto Parking Authority through GBFS</a></td>
+    <td class="tg-0pky">2024-01-08</td>
+  </tr>
+  <tr>
+    <td class="tg-btxf">Road Network</td>
+    <td class="tg-btxf">OpenStreetMap road network data for Ontario, Canada</td>
+    <td class="tg-btxf">PBF</td>
+    <td class="tg-btxf"><a href="https://download.geofabrik.de/north-america/canada/ontario.html" target="_blank" rel="noopener noreferrer">OpenStreetMap through Geofabrik</a></td>
+    <td class="tg-btxf">2024-01-08</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">2021 Census</td>
+    <td class="tg-0pky">2021 Canadian Census data</td>
+    <td class="tg-0pky"><span style="font-style:italic">sf</span> data.frame</td>
+    <td class="tg-0pky"><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer">Statistics Canada through </a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"><span style="font-style:italic">cancensus</span></a><a href="https://cran.r-project.org/web/packages/cancensus/index.html" target="_blank" rel="noopener noreferrer"> package</a></td>
+    <td class="tg-0pky">2024-02-05</td>
+  </tr>
+</tbody>
+</table>
+
+## Catchment Area Analysis
+
+* To measure the coverage area of each bike share station, we calculated the 15-minute walking distance network buffers around them, using the *r5r* package in *R*.
+* To avoid overlapping in catchment areas, we created Voronoi polygons based on Euclidean distance for each station and intersected them with the network buffers to get the non-overlapping coverage areas for each bike share station.
+
+## Catchment Area Analysis
+
+```{r, out.width="100%"}
+catch <- st_read("../Export Geo-results/catchment_areas.gpkg",
+                 quiet = TRUE)
+catch <- st_transform(catch, crs = 4326)
+
+m <- mapview(catch, zcol = "all_trips",
+        at = quantile(catch$all_trips, probs = seq(0, 1, 0.2)),
+        col.regions = brewer.pal(9, "GnBu"),
+        canvas = T,
+        layer.name = "Ridership at Catchment Area")
+
+m@map %>% setView(-79.32464, 43.69037, zoom = 11)
+```
+
+## Areal Weighted Interpolation
+
+To construct metrics quantifying the service provision equity, we calculated 8 socio-demographic variables using 2021 Canadian Census Data: 
+the percentages of 1\) Females, 2\) Indigenous people, 3\) White people, 4\) Chinese people, 5\) Black people, 6\) Latino people, 7\) people with household total income below \$40,000, and 8\) people with household total income above \$100,000 in 2020 for each census dissemination area (DA) in the City of Toronto.
+
+## Areal Weighted Interpolation
+
+We used the *areal* package in *R* to reshape the census data into the non-overlapping coverage areas, using the areal weighted interpolation method.
+
+![](images/awi_diagram1.png){width="48%"} ![](images/awi_diagram2.png){width="48%"}
+
+## Areal Weighted Interpolation
+
+Formally, areal weighted interpolation involves four steps:
+
+1. Intersecting the non-overlapping coverage areas with the census dissemination areas.
+2. Calculating an areal weight for each intersected feature, using $W_i=\frac{A_i}{\sum_i A_{ik}}$.
+3. Estimating the share of the population value that occupies the intersected feature, using $E_i=V_j\times W_i$.
+4. Summarizing the data based on the target identification number, using $G_k=\sum_i E_{ik}$.
+
+## Areal Weighted Interpolation
+
+* The Toronto Bike Share system-wide socio-demographics were calculated as a weighted average based on ridership at each station, $\overline{x}=\frac{\sum n\times x}{n}$.
+  - 2 types of riderships: annual, casual
+  - Annual riders only accounts for about 6.27\% of the total trips in 2023.
+* Similarly, Toronto city-wide average were calculated as a weighted average based on population count at each DA.
+
+## Cluster Analysis
+
+* We applied the Multivariate Clustering Geoprocessing tool (K-means Clustering) in ArcGIS Pro to the 8 socio-demographic variables of the bike share stations in order to group them into 5 clusters based on their attribute similarities. 
+* From these five clusters, we identified existing catchment areas that are relatively more equitable compared to others.
+
+## Cluster Analysis
+
+<p align="center">
+ <img src="../Graphs/box_plot.jpg" style="width: 75%;">
+</p>
+
+## Hotspot Analysis
+
+* We used Hotspot Analysis or Getis-Ord $Gi^*$ to identify the census DAs that have high or low values of the socio-demographic variables, compared to the surrounding areas. 
+* We employed a spatial weight matrix constructed using the 40-nearest neighbours method, along with the row standardized Bisquare Kernel Function, $w_{ij}=[1-(\frac{d_{ij}}{\alpha_i})^2]^2$ and $\sum_j w_{ij}=1$.
+
+## Hotspot Analysis
+
+<p align="center">
+ <img src="../Graphs/bisquare.png" style="width: 80%;">
+</p>
+
+## Suitability Analysis
+
+* We identified socio-demographic hotspots with a confidence level exceeding 90% and converted them into raster format, with cell values equal to the original socio-demographic variables. 
+
+* We created an approximate 1-kilometre buffer zone raster around the equitable catchment areas identified by the cluster analysis.
+
+## Suitability Analysis
+
+![](../Graphs/low-income_hotspots.jpg){width="48%"} ![](../Graphs/buffer_cluster.png){width="48%"}
+
+## Suitability Analysis
+
+* We computed a weighted sum of these raster layers in ArcGIS Pro to ascertain the most suitable areas for the expansion of the Bike Share Toronto system. 
+
+* The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. 
+
+* The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
