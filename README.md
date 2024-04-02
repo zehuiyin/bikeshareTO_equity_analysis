@@ -22,5 +22,5 @@ To optimize storage, this repository hosts selected intermediate and final resul
 For more details, you can access the poster ([PDF](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Poster/Poster.pdf) or [Interactive Dashboard](https://zehuiyin.github.io/bikeshareTO_equity_analysis/)), [slides](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Presentation/Presentation.html) and the [report](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Report/Report.pdf).
 
 ## Workflow:
-The workflow diagram below outlines the project’s process. It should be noted that certain analyses were performed using ArcGIS Pro, for which the source code is not available.
+The workflow diagram below outlines the project’s analysis process. It should be noted that certain analyses were performed using ArcGIS Pro, for which the source code is not available.
 ![](./Graphs/Workflow.png)
