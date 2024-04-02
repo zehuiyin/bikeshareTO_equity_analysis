@@ -19,7 +19,7 @@ This project addresses the following two research questions:
 ## Repository Contents:
 To optimize storage, this repository hosts selected intermediate and final results data, excluding any extensive raw datasets. Access to the raw data can be obtained through the provided data source [link](./Data/data_source.xlsx).
 
-For more details, you can access the poster ([PDF](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Poster/Poster.pdf) or [Interactive Dashboard](https://zehuiyin.github.io/bikeshareTO_equity_analysis/)) and the [report](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Report/Report.pdf).
+For more details, you can access the poster ([PDF](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Poster/Poster.pdf) or [Interactive Dashboard](https://zehuiyin.github.io/bikeshareTO_equity_analysis/)), [slides](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Presentation/Presentation.html) and the [report](https://zehuiyin.github.io/bikeshareTO_equity_analysis/Report/Report.pdf).
 
 ## Workflow:
 The workflow diagram below outlines the project’s process. It should be noted that certain analyses were performed using ArcGIS Pro, for which the source code is not available.

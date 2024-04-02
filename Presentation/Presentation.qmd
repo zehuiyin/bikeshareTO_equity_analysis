@@ -244,3 +244,53 @@ Formally, areal weighted interpolation involves four steps:
 * The weights for the socio-demographic hotspot layers were set as the inverse of their respective means, $w_i=\frac{1}{\mu_i}$. 
 
 * The buffer layer was assigned a weight of 1.2 to balance the importance of proximity to existing stations against the need to serve underserved populations.
+
+## Results and Discussion
+
+<p align="center">
+ <img src="../Poster/images/agg_results.png" style="width: 60%;">
+</p>
+
+## Results and Discussion
+
+* Employing catchment area analysis, we discovered disparities in service provision: an oversupply to White, Chinese, and low-income populations contrasted with an undersupply to Black and female demographics. 
+
+* These findings indicate significant opportunities for enhancing the system’s equitable distribution of services. 
+
+## Results and Discussion
+
+<p align="center">
+ <img src="../Graphs/Suitability.png" style="width: 80%;">
+</p>
+
+## Results and Discussion
+
+* Based on the suitability analysis, the areas with the highest suitability scores include Scarborough’s West Hill, North York, Yorkdale, and predominantly the Jane and Finch area.
+
+* Our analysis is subject to two primary constraints:
+
+  1. Due to the unavailability of historical data for bike share stations, our study is based on real-time station data accessed on January 8, 2024.
+
+  2. The delineation of non-overlapping catchment areas was performed using Euclidean distance.
+
+## Thanks for Listening!
+
+:::: {.columns}
+
+::: {.column width="20%"}
+![](../Graphs/qr_code.svg){width=200 height=200}
+:::
+
+::: {.column width="80%"}
+Please scan the QR code to access an Online Dashboard that summarizes this project.
+
+You can also find the presentation slides, report, and analysis R codes hosted there.
+:::
+
+::::
+
+For any questions or further information, feel free to contact me:
+
+- Email: [zehuiyin\@gmail.com](mailto:zehuiyin@gmail.com)
+- Twitter: [\@zehuiyin](https://twitter.com/zehuiyin)
+- More Projects: <https://zehuiyin.github.io/>
