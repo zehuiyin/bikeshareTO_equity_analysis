@@ -2,6 +2,8 @@
 title: "Toward Equitable Service Provision"
 subtitle: "A Catchment Area Analysis of The Bike Share Toronto System"
 author: "Zehui Yin, Filip Panaitescu, and Shixiang Xing"
+date: 2024-04-03
+institute: University of Toronto Scarborough
 format: 
   revealjs:
     slide-number: true
@@ -260,7 +262,7 @@ Formally, areal weighted interpolation involves four steps:
 ## Results and Discussion
 
 <p align="center">
- <img src="../Graphs/Suitability.png" style="width: 80%;">
+ <img src="../Graphs/Suitability.png" style="width: 70%;">
 </p>
 
 ## Results and Discussion
