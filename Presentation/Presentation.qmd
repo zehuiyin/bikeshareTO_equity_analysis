@@ -2,13 +2,13 @@
 title: "Toward Equitable Service Provision"
 subtitle: "A Catchment Area Analysis of The Bike Share Toronto System"
 author: "Zehui Yin, Filip Panaitescu, and Shixiang Xing"
-date: 2024-04-03
+date: "`r Sys.Date()`"
 institute: University of Toronto Scarborough
 format: 
   revealjs:
     slide-number: true
     logo: ../Poster/images/g4.png
-    footer: <https://zehuiyin.github.io/>
+    footer: "Event Name"
 execute: 
   freeze: true
 include-in-header:
@@ -38,7 +38,7 @@ include-in-header:
 ## The Team and Project
 
 * 3 Undergraduate Students at UTSC
-* This project was completed for the course GGRD30H3: GIS Research Project at UTSC in Winter 2024.
+* This project was completed for the course *GGRD30H3: GIS Research Project* at UTSC in Winter 2024.
 * Supervised by Dr. Glenn Brauen, Associate Professor, Department of Human Geography at UTSC
 
 ## Table of Contents
@@ -215,7 +215,7 @@ Formally, areal weighted interpolation involves four steps:
 ## Cluster Analysis
 
 <p align="center">
- <img src="../Graphs/box_plot.jpg" style="width: 75%;">
+ <img src="../Graphs/box_plot.jpg" style="width: 70%;">
 </p>
 
 ## Hotspot Analysis
@@ -250,7 +250,7 @@ Formally, areal weighted interpolation involves four steps:
 ## Results and Discussion
 
 <p align="center">
- <img src="../Poster/images/agg_results.png" style="width: 60%;">
+ <img src="../Poster/images/agg_results.png" style="width: 55%;">
 </p>
 
 ## Results and Discussion
@@ -291,8 +291,8 @@ You can also find the presentation slides, report, and analysis R codes hosted t
 
 ::::
 
-For any questions or further information, feel free to contact me:
+For any questions or further information,<br>feel free to contact me:
 
 - Email: [zehuiyin\@gmail.com](mailto:zehuiyin@gmail.com)
 - Twitter: [\@zehuiyin](https://twitter.com/zehuiyin)
-- More Projects: <https://zehuiyin.github.io/>
+- Personal Website: <https://zehuiyin.github.io/>
