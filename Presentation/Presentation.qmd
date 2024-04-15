@@ -8,7 +8,7 @@ format:
   revealjs:
     slide-number: true
     logo: ../Poster/images/g4.png
-    footer: "Event Name"
+    footer: "GGRD30"
 execute: 
   freeze: true
 include-in-header:
