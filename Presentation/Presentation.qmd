@@ -182,8 +182,22 @@ m@map %>% setView(-79.32464, 43.69037, zoom = 11)
 
 ## Areal Weighted Interpolation
 
-To construct metrics quantifying the service provision equity, we calculated 8 socio-demographic variables using 2021 Canadian Census Data: 
-the percentages of 1\) Females, 2\) Indigenous people, 3\) White people, 4\) Chinese people, 5\) Black people, 6\) Latino people, 7\) people with household total income below \$40,000, and 8\) people with household total income above \$100,000 in 2020 for each census dissemination area (DA) in the City of Toronto.
+To construct metrics quantifying the service provision equity, we calculated 8 socio-demographic variables using 2021 Canadian Census Data: For each census dissemination area in the City of Toronto, the percentages of 
+
+:::: {.columns}
+::: {.column width="40%"}
+1. Females
+2. Indigenous people
+3. White people
+4. Chinese people
+5. Black people
+:::
+::: {.column width="60%"}
+6. Latino people
+7. People with household total income below \$40,000 in 2020
+8. People with household total income above \$100,000 in 2020
+:::
+::::
 
 ## Areal Weighted Interpolation
 
